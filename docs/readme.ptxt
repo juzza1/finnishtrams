@@ -1,0 +1,140 @@
+Finnish Trams
+-----------------------------------
+
+Contents:
+
+1 About
+2 Usage and Parameters
+3 Building from source
+  3.2 Obtaining the source
+4 Credits
+5 License
+6 License (makefile)
+
+
+-------
+1 About
+-------
+
+Finnish Trams includes trams used in Finland from the late 19th century horse-driven trams to modern day articulated trams.
+
+Name of this Repo:  Finnish Trams
+Repository version: {{REPO_REVISION}}
+
+
+----------------------
+2 Usage and Parameters
+----------------------
+
+
+--------------------
+3 Using the Makefile
+--------------------
+
+Usually there's not much which needs to be changed when you obtain the
+source. Your friends will usually be
+    make
+    make install
+
+Both will build the grf from source, the latter will also try to copy
+the grf into your grf folder so that it is available for testing and
+use straight away.
+
+A brief overview over all Makefile targets is given here:
+
+all:
+	This is the default target, if also no parameter is given to
+	make. It will build the grf file and the documentation and
+	bunndle them in a convenient tar for distribution
+
+docs:
+	Build the documentation files (if any)
+
+bundle:
+	This target will create a directory called "<name>-nightly" and
+	copy the grf file there and the documentation files, readme.txt,
+	changelog.txt and license.txt
+
+bundle_zip
+	This will zip the bundle directory into one zip for distribution
+
+bundle_tar
+	This will tar the bundle directory into a tar archive for
+	distribution or upload to bananas
+
+bundle_src
+	Creates a source bundle
+
+install:
+	This will create a tar archive (like bundle_tar) and copy it
+	into the INSTALLDIR as specified in Makefile.local (or the
+	default dir, if that isn't defined). Don't rely on a good
+	detection of the default installation directory. It's
+	especially bound to fail on windows machines.
+
+maintainer-clean
+	This phony targe cleans everything which can be built by them	Makefile.
+	This can also include files which are part of the repository or which
+	require specific tools or much time to rebuild (like gimp).
+
+distclean:
+	This phony target cleans everything from a source bundle which
+	wasn't shipped.
+
+clean:
+	This phony target will delete all files which this Makefile will
+	create
+
+check:
+	Check the md5sum of the built newgrf against the supplied md5sum
+	(Intended to be used when building from tar balls; it will fail
+	if no source bundle was built previously)
+
+
+
+3.2 Obtaining the source
+------------------------
+
+The source code can be obtained from the #openttdcoop DevZone at
+    http://dev.openttdcoop.org/projects/finnishtrams
+or via mercurial checkout
+    hg clone http://hg.openttdcoop.org/finnishtrams
+
+---------
+4 Credits
+---------
+
+Source images: www.raitio.org
+Coding, graphics: juzza1
+
+Makefile: Ingo von Borstel (aka planetmaker)
+Gimp script: planetmaker, Hevan53
+
+
+---------------
+5 License
+---------------
+
+Excluding the makefile, this newGRF is released under CC0 1.0, meaning "no rights reservered". You are free to do whatever you want with it. Full legal text can be found in license.txt. License for makefile can be found in license_makefile.txt.
+
+
+---------------
+6 License (makefile)
+---------------
+
+make-nml NewGRF build framework
+Copyright (C) 2011-2013 planetmaker and others
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this NewGRF; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.

@@ -1,0 +1,67 @@
+//macros for creating trams
+#define TRAM_NON_ARTICULATED(ID, LENGTH, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY) \
+    SPRITES_NON_ARTICULATED(ID, LENGTH) \
+    COMMON_CODE(ID, GFXPATH, LENGTH, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY)
+
+#define TRAM_ARTICULATED_2_PARTS
+
+#define TRAM_ARTICULATED_3_PARTS
+
+#define TRAM_ARTICULATED_4_PARTS
+
+
+//helper macros for tram creation
+
+//some additional helper macros are used here to make macros inside strings expand properly
+//+ operator concatenates strings at the nml compiler level
+#define GFXPATH_HELPER(ID) #ID
+#define GFXPATH(ID) GFXPATH_HELPER(ID)
+
+#define SPRITES_NON_ARTICULATED(ID, LENGTH) \
+    spriteset (spriteset_ ## ID ## _loaded, "gfx/png_generated/" + GFXPATH(ID) + "_loaded.png") { \
+        tmpl_tram_ ## LENGTH() \
+    } \
+    spriteset (spriteset_ ## ID ## _loading, "gfx/png_generated/" + GFXPATH(ID) + "_loading.png") { \
+        tmpl_tram_ ## LENGTH() \
+    } \
+    spritegroup spritegroup_ ## ID { \
+        loading: (spriteset_ ## ID ## _loading); \
+        loaded: (spriteset_ ## ID ## _loaded); \
+    } 
+
+#define COMMON_CODE(ID, GFXPATH, LENGTH, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY) \
+    spriteset (spriteset_ ## ID ## _purchase, "gfx/png_generated/" + GFXPATH_HELPER(ID) + "_loaded.png") { \
+        tmpl_purchase() \
+    } \
+    item (FEAT_ROADVEHS, item_ ## ID) { \
+        property { \
+            name:                           string(STR_NAME_ ## ID); \
+            climates_available:             ALL_CLIMATES; \
+            introduction_date:              date(INTR_Y, 01, 01); \
+            model_life:                     MODEL_LIFE; \
+            vehicle_life:                   30; \
+            reliability_decay:              20; \
+            loading_speed:                  5; \
+            cost_factor:                    PUR_COST; \
+            running_cost_factor:            RUN_COST; \
+            cargo_age_period:               185; \
+            sprite_id:                      SPRITE_ID_NEW_ROADVEH; \
+            speed:                          SPEED km/h; \
+            misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_NO_BREAKDOWN_SMOKE); \
+            refit_cost:                     0; \
+            running_cost_base:              RUNNING_COST_ROADVEH; \
+            power:                          POWER hpM; \
+            weight:                         WEIGHT ton; \
+            tractive_effort_coefficient:    TE_COEF; \
+            air_drag_coefficient:           0; \
+            default_cargo_type:             PASS; \
+            cargo_capacity:                 CAPACITY; \
+            visual_effect:                  visual_effect(VISUAL_EFFECT_ELECTRIC, 0); \
+            length:                         LENGTH; \
+        } \
+        graphics { \
+            cargo_capacity:                 CAPACITY; \
+            purchase:                       spriteset_ ## ID ## _purchase; \
+            default:                        spritegroup_## ID; \
+        } \
+    }

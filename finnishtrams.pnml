@@ -1,0 +1,10 @@
+// List of source files included from main file
+#include "src/header.pnml"
+
+#include "src/cargotable.pnml"
+
+#include "src/sprite_templates.pnml"
+
+#include "src/tram_template.pnml"
+
+#include "src/tram_generator.pnml"

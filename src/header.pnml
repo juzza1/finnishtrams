@@ -1,0 +1,10 @@
+grf {
+    grfid: "JV\03\01";
+    name: string(STR_GRF_NAME);
+    desc: string(STR_GRF_DESCRIPTION);
+    version: NEWGRF_VERSION;
+    min_compatible_version: 1;
+}
+//fix depot view
+train_width_32_px = 1;
+traininfo_y_offset = 2;
