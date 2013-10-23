@@ -1,0 +1,10 @@
+.~
+custom_tags.txt
+docs/readme.txt
+finnishtrams.grf*
+finnishtrams.nml
+finnishtrams.tar
+finnishtrams/
+gfx/png_generated/
+parsetab.py
+Makefile_gfx.dep
