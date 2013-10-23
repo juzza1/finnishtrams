@@ -9,5 +9,12 @@
 # Let's assume you have a source file test.xcf and want to generate a png file which
 # contains terrain which is composed by showing the layers named White, Blue and Ground:
 #
-gfx/png_generated/hkl_2_axle_loaded.png       gfx/hkl_2_axle.xcf      realistic checker bg
-gfx/png_generated/hkl_2_axle_loading.png      gfx/hkl_2_axle.xcf      doors realistic checker bg
+gfx/png_generated/hkl_2_axle_loaded.png         gfx/hkl_2_axle.xcf      cat realistic bg
+gfx/png_generated/hkl_2_axle_loading.png        gfx/hkl_2_axle.xcf      doors cat realistic bg
+gfx/png_generated/hkl_2_axle_2cc_loaded.png     gfx/hkl_2_axle.xcf      cat 2cc realistic bg
+gfx/png_generated/hkl_2_axle_2cc_loading.png    gfx/hkl_2_axle.xcf      doors cat 2cc realistic bg
+
+gfx/png_generated/variotram_loaded.png          gfx/variotram.xcf       cat realistic bg
+gfx/png_generated/variotram_loading.png         gfx/variotram.xcf       doors cat realistic bg
+gfx/png_generated/variotram_2cc_loaded.png      gfx/variotram.xcf       cat 2cc realistic bg
+gfx/png_generated/variotram_2cc_loading.png     gfx/variotram.xcf       doors cat 2cc realistic bg

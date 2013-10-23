@@ -1,7 +1,10 @@
 //macros for creating trams
-#define TRAM_NON_ARTICULATED(ID, LENGTH, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY) \
-    SPRITES_NON_ARTICULATED(ID, LENGTH) \
-    COMMON_CODE(ID, GFXPATH, LENGTH, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY)
+
+#define TRAM_NON_ARTICULATED(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LEN1) \
+    SPRITES(ID, LEN1, 0, 0) \
+    SPRITE_SWITCHES_NON_ARTICULATED(ID) \
+    TRAM_COMMON(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LEN1) \
+    GRAPHICS_NON_ARTICULATED(ID, CAPACITY)
 
 #define TRAM_ARTICULATED_2_PARTS
 
@@ -9,31 +12,105 @@
 
 #define TRAM_ARTICULATED_4_PARTS
 
+#define TRAM_ARTICULATED_5_PARTS(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LEN1, LEN2, LEN3, LEN4, LEN5, ROW1, ROW2, ROW3, ROW4, ROW5, CONS_LEN) \
+    SPRITES(ID, LEN1, 0, ROW1) \
+    SPRITES(ID, LEN2, 1, ROW2) \
+    SPRITES(ID, LEN3, 2, ROW3) \
+    SPRITES(ID, LEN4, 3, ROW4) \
+    SPRITES(ID, LEN5, 4, ROW5) \
+    SWITCHES_ARTICULATED_5(ID, LEN1, LEN2, LEN3, LEN4, LEN5, CONS_LEN) \
+    SPRITE_SWITCHES_ARTICULATED(ID) \
+    TRAM_COMMON(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LEN1) \
+    GRAPHICS_ARTICULATED(ID, CAPACITY)
 
 //helper macros for tram creation
 
-//some additional helper macros are used here to make macros inside strings expand properly
-//+ operator concatenates strings at the nml compiler level
-#define GFXPATH_HELPER(ID) #ID
-#define GFXPATH(ID) GFXPATH_HELPER(ID)
-
-#define SPRITES_NON_ARTICULATED(ID, LENGTH) \
-    spriteset (spriteset_ ## ID ## _loaded, "gfx/png_generated/" + GFXPATH(ID) + "_loaded.png") { \
-        tmpl_tram_ ## LENGTH() \
+//create normal and 2cc spritesets and spritegroups
+#define SPRITES(ID, LENGTH, POS, ROW) \
+    spriteset(spriteset_ ## ID ## _ ## POS ## _loaded, "gfx/png_generated/" + #ID + "_loaded.png") { \
+        tmpl_tram(ROW, LENGTH) \
     } \
-    spriteset (spriteset_ ## ID ## _loading, "gfx/png_generated/" + GFXPATH(ID) + "_loading.png") { \
-        tmpl_tram_ ## LENGTH() \
+    spriteset(spriteset_ ## ID ## _ ## POS ## _loading, "gfx/png_generated/" + #ID + "_loading.png") { \
+        tmpl_tram(ROW, LENGTH) \
     } \
-    spritegroup spritegroup_ ## ID { \
-        loading: (spriteset_ ## ID ## _loading); \
-        loaded: (spriteset_ ## ID ## _loaded); \
+    spritegroup spritegroup_ ## ID ## _ ## POS { \
+        loading: (spriteset_ ## ID ## _ ## POS ## _loading); \
+        loaded: (spriteset_ ## ID ## _ ## POS ## _loaded); \
+    } \
+    spriteset(spriteset_ ## ID ## _2cc_ ## POS ## _loaded, "gfx/png_generated/" + #ID + "_2cc_loaded.png") { \
+        tmpl_tram(ROW, LENGTH) \
+    } \
+    spriteset(spriteset_ ## ID ## _2cc_ ## POS ## _loading, "gfx/png_generated/" + #ID + "_2cc_loading.png") { \
+        tmpl_tram(ROW, LENGTH) \
+    } \
+    spritegroup spritegroup_ ## ID ## _2cc_ ## POS { \
+        loading: (spriteset_ ## ID ## _2cc_ ## POS ## _loading); \
+        loaded: (spriteset_ ## ID ## _2cc_ ## POS ## _loaded); \
     } 
 
-#define COMMON_CODE(ID, GFXPATH, LENGTH, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY) \
-    spriteset (spriteset_ ## ID ## _purchase, "gfx/png_generated/" + GFXPATH_HELPER(ID) + "_loaded.png") { \
-        tmpl_purchase() \
+
+//set amount of articulated parts, uses CONS_LEN from tram_generator
+#define SWITCH_ARTICULATED_PARTS(ID, CONS_LEN) \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _articulated, extra_callback_info1) { \
+        1 .. CONS_LEN - 1: item_ ## ID; \
+        CB_RESULT_NO_MORE_ARTICULATED_PARTS; \
+    }
+
+//length sprites need to depend on the position in vehid chain
+#define SWITCHES_ARTICULATED_5(ID, LEN1, LEN2, LEN3, LEN4, LEN5, CONS_LEN) \
+    SWITCH_ARTICULATED_PARTS(ID, CONS_LEN) \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _length, position_in_vehid_chain) { \
+        1: LEN2; \
+        2: LEN3; \
+        3: LEN4; \
+        4: LEN5; \
+        LEN1; \
     } \
-    item (FEAT_ROADVEHS, item_ ## ID) { \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _sprites, position_in_vehid_chain) { \
+        1: spritegroup_ ## ID ## _1; \
+        2: spritegroup_ ## ID ## _2; \
+        3: spritegroup_ ## ID ## _3; \
+        4: spritegroup_ ## ID ## _4; \
+        spritegroup_ ## ID ## _0; \
+    } \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _2cc_sprites, position_in_vehid_chain) { \
+        1: spritegroup_ ## ID ## _2cc_1; \
+        2: spritegroup_ ## ID ## _2cc_2; \
+        3: spritegroup_ ## ID ## _2cc_3; \
+        4: spritegroup_ ## ID ## _2cc_4; \
+        spritegroup_ ## ID ## _2cc_0; \
+    }
+
+#define SPRITE_SWITCHES_NON_ARTICULATED(ID) \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _livery_def_2cc, cargo_subtype) { \
+        1: spritegroup_ ## ID ## _0; \
+        spritegroup_ ## ID ## _2cc_0; \
+    } \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _livery_def_realistic, cargo_subtype) { \
+        1: spritegroup_ ## ID ## _2cc_0; \
+        spritegroup_ ## ID ## _0; \
+    }
+
+#define SPRITE_SWITCHES_ARTICULATED(ID) \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _livery_def_2cc, cargo_subtype) { \
+        1: switch_ ## ID ## _sprites; \
+        switch_ ## ID ## _2cc_sprites; \
+    } \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _livery_def_realistic, cargo_subtype) { \
+        1: switch_ ## ID ## _2cc_sprites; \
+        switch_ ## ID ## _sprites; \
+    }
+
+//code common to all types of trams. use colour_mapping to disable use of 1cc/2cc with realistic livery
+#define TRAM_COMMON(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LENGTH) \
+    spriteset(spriteset_ ## ID ## _2cc_purchase, "gfx/png_generated/" + #ID + "_2cc_loaded.png") { \
+        tmpl_tram_purchase() \
+    } \
+    spriteset(spriteset_ ## ID ## _purchase, "gfx/png_generated/" + #ID + "_loaded.png") { \
+        tmpl_tram_purchase() \
+    } \
+    \
+    item(FEAT_ROADVEHS, item_ ## ID) { \
         property { \
             name:                           string(STR_NAME_ ## ID); \
             climates_available:             ALL_CLIMATES; \
@@ -41,13 +118,15 @@
             model_life:                     MODEL_LIFE; \
             vehicle_life:                   30; \
             reliability_decay:              20; \
+            refittable_cargo_classes:       bitmask(CC_PASSENGERS); \
+            cargo_allow_refit:              [PASS, TOUR]; \
             loading_speed:                  5; \
             cost_factor:                    PUR_COST; \
             running_cost_factor:            RUN_COST; \
             cargo_age_period:               185; \
             sprite_id:                      SPRITE_ID_NEW_ROADVEH; \
             speed:                          SPEED km/h; \
-            misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_NO_BREAKDOWN_SMOKE); \
+            misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_2CC); \
             refit_cost:                     0; \
             running_cost_base:              RUNNING_COST_ROADVEH; \
             power:                          POWER hpM; \
@@ -59,9 +138,54 @@
             visual_effect:                  visual_effect(VISUAL_EFFECT_ELECTRIC, 0); \
             length:                         LENGTH; \
         } \
-        graphics { \
-            cargo_capacity:                 CAPACITY; \
-            purchase:                       spriteset_ ## ID ## _purchase; \
-            default:                        spritegroup_## ID; \
+    }
+
+#define GRAPHICS_NON_ARTICULATED(ID, CAPACITY) \
+    if (param_default_livery == 1) { \
+        item(FEAT_ROADVEHS, item_ ## ID) { \
+            graphics { \
+                cargo_capacity:     CAPACITY; \
+                colour_mapping:     switch_colour_mapping_def_2cc; \
+                cargo_subtype_text: switch_subtype_text_def_2cc; \
+                purchase:           spriteset_ ## ID ## _2cc_purchase; \
+                default:            switch_ ## ID ## _livery_def_2cc; \
+            } \
+        } \
+    } else { \
+        item(FEAT_ROADVEHS, item_ ## ID) { \
+            graphics { \
+                cargo_capacity:     CAPACITY; \
+                colour_mapping:     switch_colour_mapping_def_realistic; \
+                cargo_subtype_text: switch_subtype_text_def_realistic; \
+                purchase:           spriteset_ ## ID ## _purchase; \
+                default:            switch_ ## ID ## _livery_def_realistic; \
+            } \
+        } \
+    }
+
+#define GRAPHICS_ARTICULATED(ID, CAPACITY) \
+    if (param_default_livery == 1) { \
+        item(FEAT_ROADVEHS, item_ ## ID) { \
+            graphics { \
+                cargo_capacity:     CAPACITY; \
+                colour_mapping:     switch_colour_mapping_def_2cc; \
+                cargo_subtype_text: switch_subtype_text_def_2cc; \
+                purchase:           spriteset_ ## ID ## _2cc_purchase; \
+                articulated_part:   switch_ ## ID ## _articulated; \
+                length:             switch_ ## ID ## _length; \
+                default:            switch_ ## ID ## _livery_def_2cc; \
+            } \
+        } \
+    } else { \
+        item(FEAT_ROADVEHS, item_ ## ID) { \
+            graphics { \
+                cargo_capacity:     CAPACITY; \
+                colour_mapping:     switch_colour_mapping_def_realistic; \
+                cargo_subtype_text: switch_subtype_text_def_realistic; \
+                purchase:           spriteset_ ## ID ## _purchase; \
+                articulated_part:   switch_ ## ID ## _articulated; \
+                length:             switch_ ## ID ## _length; \
+                default:            switch_ ## ID ## _livery_def_realistic; \
+            } \
         } \
     }

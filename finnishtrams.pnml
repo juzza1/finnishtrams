@@ -5,6 +5,8 @@
 
 #include "src/sprite_templates.pnml"
 
+#include "src/global_switches.pnml"
+
 #include "src/tram_template.pnml"
 
 #include "src/tram_generator.pnml"

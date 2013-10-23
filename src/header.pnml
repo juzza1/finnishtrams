@@ -4,7 +4,24 @@ grf {
     desc: string(STR_GRF_DESCRIPTION);
     version: NEWGRF_VERSION;
     min_compatible_version: 1;
+
+    param 1 {
+        param_default_livery {
+            type: int;
+            name: string(STR_PARAM_DEFAULT_LIVERY);
+            desc: string(STR_PARAM_DEFAULT_LIVERY_DESC);
+            min_value: 0;
+            max_value: 1;
+            def_value: 0;
+            names: {
+                0: string(STR_PARAM_LIVERY_REALISTIC);
+                1: string(STR_PARAM_LIVERY_2CC);
+            };
+        }
+    }
 }
+
+
 //fix depot view
 train_width_32_px = 1;
 traininfo_y_offset = 2;
