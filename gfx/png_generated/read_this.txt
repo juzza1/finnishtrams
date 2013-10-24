@@ -1,0 +1,1 @@
+These files are generated from the source gimp images. Editing is not recommended.

@@ -1,10 +1,12 @@
 .~
+.*.swp
 custom_tags.txt
 docs/readme.txt
 finnishtrams.grf*
 finnishtrams.nml
 finnishtrams.tar
 finnishtrams/
-gfx/png_generated/*.png
+gfx/png_generated/.*.png
+gfx/png_generated/.*.scm
 parsetab.py
 Makefile_gfx.dep
