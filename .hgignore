@@ -5,6 +5,6 @@ finnishtrams.grf*
 finnishtrams.nml
 finnishtrams.tar
 finnishtrams/
-gfx/png_generated/
+gfx/png_generated/*.png
 parsetab.py
 Makefile_gfx.dep
