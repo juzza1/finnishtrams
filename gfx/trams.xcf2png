@@ -18,3 +18,8 @@ gfx/png_generated/variotram_loaded.png          gfx/variotram.xcf       cat real
 gfx/png_generated/variotram_loading.png         gfx/variotram.xcf       doors cat realistic bg
 gfx/png_generated/variotram_2cc_loaded.png      gfx/variotram.xcf       cat 2cc realistic bg
 gfx/png_generated/variotram_2cc_loading.png     gfx/variotram.xcf       doors cat 2cc realistic bg
+
+gfx/png_generated/arctic_loaded.png             gfx/arctic.xcf          cat realistic bg
+gfx/png_generated/arctic_loading.png            gfx/arctic.xcf          doors cat realistic bg
+gfx/png_generated/arctic_2cc_loaded.png         gfx/arctic.xcf          cat 2cc realistic bg
+gfx/png_generated/arctic_2cc_loading.png        gfx/arctic.xcf          doors2cc doors cat 2cc realistic bg

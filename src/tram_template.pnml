@@ -8,7 +8,14 @@
 
 #define TRAM_ARTICULATED_2_PARTS
 
-#define TRAM_ARTICULATED_3_PARTS
+#define TRAM_ARTICULATED_3_PARTS(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LEN1, LEN2, LEN3, ROW1, ROW2, ROW3, CONS_LEN) \
+    SPRITES(ID, LEN1, 0, ROW1) \
+    SPRITES(ID, LEN2, 1, ROW2) \
+    SPRITES(ID, LEN3, 2, ROW3) \
+    SWITCHES_ARTICULATED_3(ID, LEN1, LEN2, LEN3, CONS_LEN) \
+    SPRITE_SWITCHES_ARTICULATED(ID) \
+    TRAM_COMMON(ID, INTR_Y, MODEL_LIFE, PUR_COST, RUN_COST, SPEED, POWER, WEIGHT, TE_COEF, CAPACITY, LEN1) \
+    GRAPHICS_ARTICULATED(ID, CAPACITY)
 
 #define TRAM_ARTICULATED_4_PARTS
 
@@ -57,6 +64,23 @@
     }
 
 //length sprites need to depend on the position in vehid chain
+#define SWITCHES_ARTICULATED_3(ID, LEN1, LEN2, LEN3, CONS_LEN) \
+    SWITCH_ARTICULATED_PARTS(ID, CONS_LEN) \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _length, position_in_vehid_chain) { \
+        1: LEN2; \
+        2: LEN3; \
+        LEN1; \
+    } \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _sprites, position_in_vehid_chain) { \
+        1: spritegroup_ ## ID ## _1; \
+        2: spritegroup_ ## ID ## _2; \
+        spritegroup_ ## ID ## _0; \
+    } \
+    switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _2cc_sprites, position_in_vehid_chain) { \
+        1: spritegroup_ ## ID ## _2cc_1; \
+        2: spritegroup_ ## ID ## _2cc_2; \
+        spritegroup_ ## ID ## _2cc_0; \
+    }
 #define SWITCHES_ARTICULATED_5(ID, LEN1, LEN2, LEN3, LEN4, LEN5, CONS_LEN) \
     SWITCH_ARTICULATED_PARTS(ID, CONS_LEN) \
     switch(FEAT_ROADVEHS, SELF, switch_ ## ID ## _length, position_in_vehid_chain) { \
