@@ -11,6 +11,8 @@ STR_PARAM_LIVERY_REALISTIC      :Realistic
 STR_SUBTYPE_LIVERY_2CC          : (2cc livery)
 STR_SUBTYPE_LIVERY_REALISTIC    : (realistic livery)
 
+STR_NAME_horse                  :It's a goddamn Horse!
+
 STR_NAME_hkl_2_axle             :HKL 2-axle
 STR_NAME_variotram              :HKL Variotram
 STR_NAME_arctic                 :HKL Arctic

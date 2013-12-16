@@ -6,20 +6,14 @@
 # All layers not mentioned explicitly will be invisible in the exported image.
 #
 # Comment lines must have a # as their first character.
-# Let's assume you have a source file test.xcf and want to generate a png file which
-# contains terrain which is composed by showing the layers named White, Blue and Ground:
 #
-gfx/png_generated/hkl_2_axle_loaded.png         gfx/hkl_2_axle.xcf      cat realistic bg
-gfx/png_generated/hkl_2_axle_loading.png        gfx/hkl_2_axle.xcf      doors cat realistic bg
-gfx/png_generated/hkl_2_axle_2cc_loaded.png     gfx/hkl_2_axle.xcf      cat 2cc realistic bg
-gfx/png_generated/hkl_2_axle_2cc_loading.png    gfx/hkl_2_axle.xcf      doors cat 2cc realistic bg
-
-gfx/png_generated/variotram_loaded.png          gfx/variotram.xcf       cat realistic bg
-gfx/png_generated/variotram_loading.png         gfx/variotram.xcf       doors cat realistic bg
-gfx/png_generated/variotram_2cc_loaded.png      gfx/variotram.xcf       cat 2cc realistic bg
-gfx/png_generated/variotram_2cc_loading.png     gfx/variotram.xcf       doors cat 2cc realistic bg
-
-gfx/png_generated/arctic_loaded.png             gfx/arctic.xcf          cat realistic bg
-gfx/png_generated/arctic_loading.png            gfx/arctic.xcf          doors cat realistic bg
-gfx/png_generated/arctic_2cc_loaded.png         gfx/arctic.xcf          cat 2cc realistic bg
-gfx/png_generated/arctic_2cc_loading.png        gfx/arctic.xcf          doors2cc doors cat 2cc realistic bg
+gfx/png_generated/horse.png                     src/gfx-xcf/horse.xcf       horse bg
+#
+gfx/png_generated/asea_2cc_loaded.png           src/gfx-xcf/asea.xcf        cat 2cc realistic bg
+gfx/png_generated/asea_2cc_loading.png          src/gfx-xcf/asea.xcf        doors cat 2cc realistic bg
+#
+gfx/png_generated/variotram_2cc_loaded.png      src/gfx-xcf/variotram.xcf   cat 2cc realistic bg
+gfx/png_generated/variotram_2cc_loading.png     src/gfx-xcf/variotram.xcf   doors cat 2cc realistic bg
+#
+gfx/png_generated/arctic_2cc_loaded.png         src/gfx-xcf/arctic.xcf      cat 2cc realistic bg
+gfx/png_generated/arctic_2cc_loading.png        src/gfx-xcf/arctic.xcf      doors cat 2cc realistic bg
