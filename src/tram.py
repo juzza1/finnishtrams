@@ -29,7 +29,32 @@ class Tram(object):
                 for j in ottdflags:
                     if i in j:
                         outflags.append(j)
-        return outflags
+        # Convert this list into a string, flags separated by a comma and space 
+        flagsout = ', '.join(outflags)
+        return flagsout
+
+    def ConsistInfo(self, *args):
+        """Parse length and misc. info for each part in articulated consist.
+        Returns a list of lists. This function can only handle integers. Check
+        function call to see what values are passed onto this function."""
+        consinfo = []
+        for index, arg in enumerate(args):
+            partinfo = []
+            arg = Listify(arg)
+            arg = Intify(arg)
+            consinfo.append(arg)
+        # Now we have a list of lists. We need to reorganize this
+        # Get consist length from first list
+        length = len(consinfo[0])
+        cons = []
+        for enum, i in enumerate(range(length)):
+            part = []
+            for j in consinfo:
+                part.append(j[enum])
+            cons.append(part)
+        # Length of this list = the amount of parts in the consist
+        print length
+        return cons
 
     def __init__(self, **kwargs):
         "Get values from csv"
@@ -51,17 +76,26 @@ class Tram(object):
         self.long_name = kwargs.get('long_name', '')
         self.flags = kwargs.get('flags', '')
         self.capacity = kwargs.get('capacity', '0')
-        self.cons_lengths = kwargs.get('length', '8')
+        self.lengths = kwargs.get('lengths', '8')
         self.refit_gfx = kwargs.get('refit_gfx', '')
         self.visual_sfx_type = kwargs.get('visual_sfx_type', 'disable')
-        self.visual_sfx_pos = kwargs.get('visual_sfx_pos', '0')
+        self.visual_sfx_enabled = kwargs.get('visual_sfx_enabled', '0')
         self.visual_sfx_offset = kwargs.get('visual_sfx_offset', '0')
         self.sprite_rows = kwargs.get('sprite_rows', '0')
         self.recolor = kwargs.get('recolor', '')
+        # Parse consist info. Length is len(consinfo)
+        self.consinfo = self.ConsistInfo(self.lengths,
+                                         self.visual_sfx_enabled,
+                                         self.visual_sfx_offset,
+                                         self.sprite_rows)
         # Properties which require parsing
         self.misc_flags = self.ParseFlags(self.flags)
-        self.cargo_capacity = 0
+        # Capacity is (capacity from csv / number of parts in consist)
+        self.cargo_capacity =int(round(int(self.capacity) / len(self.consinfo)))
         self.visual_effect = 0
-        self.length = 0
+        # Length property is taken from first element of consist info
+        self.length = self.consinfo[0][0]
 
-#        print self.misc_flags
+        # More values, calculated & not in tracking table
+
+        print self.consinfo

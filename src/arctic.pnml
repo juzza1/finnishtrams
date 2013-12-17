@@ -1,3 +1,37 @@
+
+
+switch(FEAT_ROADVEHS, SELF, switch_arctic_2cc, position_in_consist % 3) {
+    
+    0: spritegroup_arctic_2cc_0;
+    
+    
+    1: spritegroup_arctic_2cc_1;
+    
+    
+    2: spritegroup_arctic_2cc_2;
+    
+}
+
+
+
+spritegroup spritegroup_arctic_2cc_0 {
+    loading: spriteset_arctic_2cc_loading_0
+    loaded: spriteset_arctic_2cc_loaded_0
+}
+
+
+spritegroup spritegroup_arctic_2cc_1 {
+    loading: spriteset_arctic_2cc_loading_1
+    loaded: spriteset_arctic_2cc_loaded_1
+}
+
+
+spritegroup spritegroup_arctic_2cc_2 {
+    loading: spriteset_arctic_2cc_loading_2
+    loaded: spriteset_arctic_2cc_loaded_2
+}
+
+
 item(FEAT_ROADVEHS, item_arctic, 90) {
     property {
         name:                           string(STR_NAME_arctic);
@@ -17,7 +51,7 @@ item(FEAT_ROADVEHS, item_arctic, 90) {
 
         sprite_id:                      SPRITE_ID_NEW_ROADVEH;
         speed:                          80 km/h;
-        misc_flags:                     ['ROADVEH_FLAG_TRAM', 'ROADVEH_FLAG_2CC', 'ROADVEH_FLAG_AUTOREFIT'];
+        misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_2CC, ROADVEH_FLAG_AUTOREFIT)
         refit_cost:                     0;
         running_cost_base:              RUNNING_COST_ROADVEH;
         power:                          680 kW;
@@ -25,12 +59,13 @@ item(FEAT_ROADVEHS, item_arctic, 90) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
-        cargo_capacity:                 0;
+        cargo_capacity:                 50;
         visual_effect:                  0;
-        length:                         0;
+        length:                         5;
     }
 
     graphics {
+        cargo_capacity:                 50;
         default:                        switch_arctic_gfx;
     }
 }

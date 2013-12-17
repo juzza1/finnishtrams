@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-from chameleon import PageTemplate, PageTextTemplateFile
+from chameleon import PageTemplateFile
 from cookielib import CookieJar
 from csv import DictReader
 import os
@@ -47,7 +47,7 @@ for row in incsv:
         vehs.append(row)
 
 
-template = PageTextTemplateFile('tram_temp.tnml')
+template = PageTemplateFile('tram_temp.tnml')
 
 vehobjs = {}
 for veh in vehs:

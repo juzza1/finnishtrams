@@ -1,3 +1,13 @@
+
+
+
+
+spritegroup spritegroup_asea_2cc_0 {
+    loading: spriteset_asea_2cc_loading_0
+    loaded: spriteset_asea_2cc_loaded_0
+}
+
+
 item(FEAT_ROADVEHS, item_asea, 88) {
     property {
         name:                           string(STR_NAME_asea);
@@ -17,7 +27,7 @@ item(FEAT_ROADVEHS, item_asea, 88) {
 
         sprite_id:                      SPRITE_ID_NEW_ROADVEH;
         speed:                          60 km/h;
-        misc_flags:                     ['ROADVEH_FLAG_TRAM', 'ROADVEH_FLAG_2CC', 'ROADVEH_FLAG_AUTOREFIT'];
+        misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_2CC, ROADVEH_FLAG_AUTOREFIT)
         refit_cost:                     0;
         running_cost_base:              RUNNING_COST_ROADVEH;
         power:                          680 kW;
@@ -25,12 +35,13 @@ item(FEAT_ROADVEHS, item_asea, 88) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
-        cargo_capacity:                 0;
+        cargo_capacity:                 50;
         visual_effect:                  0;
-        length:                         0;
+        length:                         5;
     }
 
     graphics {
+        cargo_capacity:                 50;
         default:                        switch_asea_gfx;
     }
 }

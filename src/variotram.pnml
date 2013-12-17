@@ -1,3 +1,55 @@
+
+
+switch(FEAT_ROADVEHS, SELF, switch_variotram_2cc, position_in_consist % 5) {
+    
+    0: spritegroup_variotram_2cc_0;
+    
+    
+    1: spritegroup_variotram_2cc_1;
+    
+    
+    2: spritegroup_variotram_2cc_2;
+    
+    
+    3: spritegroup_variotram_2cc_1;
+    
+    
+    4: spritegroup_variotram_2cc_3;
+    
+}
+
+
+
+spritegroup spritegroup_variotram_2cc_0 {
+    loading: spriteset_variotram_2cc_loading_0
+    loaded: spriteset_variotram_2cc_loaded_0
+}
+
+
+spritegroup spritegroup_variotram_2cc_1 {
+    loading: spriteset_variotram_2cc_loading_1
+    loaded: spriteset_variotram_2cc_loaded_1
+}
+
+
+spritegroup spritegroup_variotram_2cc_2 {
+    loading: spriteset_variotram_2cc_loading_2
+    loaded: spriteset_variotram_2cc_loaded_2
+}
+
+
+spritegroup spritegroup_variotram_2cc_1 {
+    loading: spriteset_variotram_2cc_loading_1
+    loaded: spriteset_variotram_2cc_loaded_1
+}
+
+
+spritegroup spritegroup_variotram_2cc_3 {
+    loading: spriteset_variotram_2cc_loading_3
+    loaded: spriteset_variotram_2cc_loaded_3
+}
+
+
 item(FEAT_ROADVEHS, item_variotram, 89) {
     property {
         name:                           string(STR_NAME_variotram);
@@ -17,7 +69,7 @@ item(FEAT_ROADVEHS, item_variotram, 89) {
 
         sprite_id:                      SPRITE_ID_NEW_ROADVEH;
         speed:                          70 km/h;
-        misc_flags:                     ['ROADVEH_FLAG_TRAM', 'ROADVEH_FLAG_2CC', 'ROADVEH_FLAG_AUTOREFIT'];
+        misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_2CC, ROADVEH_FLAG_AUTOREFIT)
         refit_cost:                     0;
         running_cost_base:              RUNNING_COST_ROADVEH;
         power:                          540 kW;
@@ -25,12 +77,13 @@ item(FEAT_ROADVEHS, item_variotram, 89) {
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
-        cargo_capacity:                 0;
+        cargo_capacity:                 21;
         visual_effect:                  0;
-        length:                         0;
+        length:                         5;
     }
 
     graphics {
+        cargo_capacity:                 21;
         default:                        switch_variotram_gfx;
     }
 }
