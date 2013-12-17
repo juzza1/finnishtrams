@@ -1,18 +1,42 @@
 
 
-
-
-spritegroup spritegroup_asea_2cc_0 {
-    loading: spriteset_asea_2cc_loading_0
-    loaded: spriteset_asea_2cc_loaded_0
+switch(FEAT_ROADVEHS, SELF, switch_arctic_2cc, position_in_consist % 3) {
+    
+    0: spritegroup_arctic_2cc_0;
+    
+    
+    1: spritegroup_arctic_2cc_1;
+    
+    
+    2: spritegroup_arctic_2cc_2;
+    
 }
 
 
-item(FEAT_ROADVEHS, item_asea, 88) {
+
+spritegroup spritegroup_arctic_2cc_0 {
+    loading: spriteset_arctic_2cc_loading_0;
+    loaded: spriteset_arctic_2cc_loaded_0;
+}
+
+
+spritegroup spritegroup_arctic_2cc_1 {
+    loading: spriteset_arctic_2cc_loading_1;
+    loaded: spriteset_arctic_2cc_loaded_1;
+}
+
+
+spritegroup spritegroup_arctic_2cc_2 {
+    loading: spriteset_arctic_2cc_loading_2;
+    loaded: spriteset_arctic_2cc_loaded_2;
+}
+
+
+item(FEAT_ROADVEHS, item_arctic, 90) {
     property {
-        name:                           string(STR_NAME_asea);
+        name:                           string(STR_NAME_arctic);
         climates_available:             ALL_CLIMATES;
-        introduction_date:              date(1930, 01, 01);
+        introduction_date:              date(2013, 01, 01);
         model_life:                     VEHICLE_NEVER_EXPIRES;
         vehicle_life:                   255;
         reliability_decay:              20;
@@ -26,12 +50,12 @@ item(FEAT_ROADVEHS, item_asea, 88) {
         cargo_age_period:               185;
 
         sprite_id:                      SPRITE_ID_NEW_ROADVEH;
-        speed:                          60 km/h;
+        speed:                          80 km/h;
         misc_flags:                     bitmask(ROADVEH_FLAG_TRAM, ROADVEH_FLAG_2CC, ROADVEH_FLAG_AUTOREFIT)
         refit_cost:                     0;
         running_cost_base:              RUNNING_COST_ROADVEH;
         power:                          680 kW;
-        weight:                         12 ton;
+        weight:                         42 ton;
         tractive_effort_coefficient:    0.3;
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
@@ -42,6 +66,6 @@ item(FEAT_ROADVEHS, item_asea, 88) {
 
     graphics {
         cargo_capacity:                 50;
-        default:                        switch_asea_gfx;
+        default:                        switch_arctic_gfx;
     }
 }

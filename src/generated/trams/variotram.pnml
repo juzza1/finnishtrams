@@ -21,32 +21,32 @@ switch(FEAT_ROADVEHS, SELF, switch_variotram_2cc, position_in_consist % 5) {
 
 
 spritegroup spritegroup_variotram_2cc_0 {
-    loading: spriteset_variotram_2cc_loading_0
-    loaded: spriteset_variotram_2cc_loaded_0
+    loading: spriteset_variotram_2cc_loading_0;
+    loaded: spriteset_variotram_2cc_loaded_0;
 }
 
 
 spritegroup spritegroup_variotram_2cc_1 {
-    loading: spriteset_variotram_2cc_loading_1
-    loaded: spriteset_variotram_2cc_loaded_1
+    loading: spriteset_variotram_2cc_loading_1;
+    loaded: spriteset_variotram_2cc_loaded_1;
 }
 
 
 spritegroup spritegroup_variotram_2cc_2 {
-    loading: spriteset_variotram_2cc_loading_2
-    loaded: spriteset_variotram_2cc_loaded_2
+    loading: spriteset_variotram_2cc_loading_2;
+    loaded: spriteset_variotram_2cc_loaded_2;
 }
 
 
 spritegroup spritegroup_variotram_2cc_1 {
-    loading: spriteset_variotram_2cc_loading_1
-    loaded: spriteset_variotram_2cc_loaded_1
+    loading: spriteset_variotram_2cc_loading_1;
+    loaded: spriteset_variotram_2cc_loaded_1;
 }
 
 
 spritegroup spritegroup_variotram_2cc_3 {
-    loading: spriteset_variotram_2cc_loading_3
-    loaded: spriteset_variotram_2cc_loaded_3
+    loading: spriteset_variotram_2cc_loading_3;
+    loaded: spriteset_variotram_2cc_loaded_3;
 }
 
 

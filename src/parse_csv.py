@@ -54,7 +54,7 @@ for veh in vehs:
     name = veh['name']
     tram = Tram(**veh)
     vehobjs[name] = tram
-    with open(name + '.pnml', 'wb') as out:
+    with open('generated/trams/' + name + '.pnml', 'wb') as out:
         out.write(template.render(**tram.__dict__))
 
 
