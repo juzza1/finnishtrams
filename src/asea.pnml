@@ -1,0 +1,36 @@
+item(FEAT_ROADVEHS, item_asea, 88) {
+    property {
+        name:                           string(STR_NAME_asea);
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(1930, 01, 01);
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                   255;
+        reliability_decay:              20;
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        //non_refittable_cargo_classes: ;
+        cargo_allow_refit:              [PASS, TOUR];
+        //cargo_disallow_refit:         ;
+        loading_speed:                  10;
+        cost_factor:                    0;
+        running_cost_factor:            0;
+        cargo_age_period:               185;
+
+        sprite_id:                      SPRITE_ID_NEW_ROADVEH;
+        speed:                          60 km/h;
+        misc_flags:                     ['ROADVEH_FLAG_TRAM', 'ROADVEH_FLAG_2CC', 'ROADVEH_FLAG_AUTOREFIT'];
+        refit_cost:                     0;
+        running_cost_base:              RUNNING_COST_ROADVEH;
+        power:                          680 kW;
+        weight:                         12 ton;
+        tractive_effort_coefficient:    0.3;
+        air_drag_coefficient:           0;
+        default_cargo_type:             PASS;
+        cargo_capacity:                 0;
+        visual_effect:                  0;
+        length:                         0;
+    }
+
+    graphics {
+        default:                        switch_asea_gfx;
+    }
+}

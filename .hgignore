@@ -1,12 +1,15 @@
-.~
-.*.swp
+syntax: glob
+
+*~
+*.swp
+*.png
+*.scm
+*.nml
+*.tar
+*.pyc
 custom_tags.txt
 docs/readme.txt
-finnishtrams.grf*
-finnishtrams.nml
-finnishtrams.tar
 finnishtrams/
-gfx/png_generated/.*.png
-gfx/png_generated/.*.scm
-parsetab.py
+finnishtrams.grf*
 Makefile_gfx.dep
+parsetab.py

@@ -1,0 +1,36 @@
+item(FEAT_ROADVEHS, item_${name}, ${num_id}) {
+    property {
+        name:                           string(STR_NAME_${name});
+        climates_available:             ALL_CLIMATES;
+        introduction_date:              date(${intr}, 01, 01);
+        model_life:                     ${model_life};
+        vehicle_life:                   ${vehicle_life};
+        reliability_decay:              ${reliability_decay};
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        //non_refittable_cargo_classes: ;
+        cargo_allow_refit:              [PASS, TOUR];
+        //cargo_disallow_refit:         ;
+        loading_speed:                  ${loading_speed};
+        cost_factor:                    ${cost_factor};
+        running_cost_factor:            ${running_cost_factor};
+        cargo_age_period:               185;
+
+        sprite_id:                      SPRITE_ID_NEW_ROADVEH;
+        speed:                          ${speed};
+        misc_flags:                     ${misc_flags};
+        refit_cost:                     0;
+        running_cost_base:              RUNNING_COST_ROADVEH;
+        power:                          ${power};
+        weight:                         ${weight};
+        tractive_effort_coefficient:    ${te_coef};
+        air_drag_coefficient:           0;
+        default_cargo_type:             PASS;
+        cargo_capacity:                 ${cargo_capacity};
+        visual_effect:                  ${visual_effect};
+        length:                         ${length};
+    }
+
+    graphics {
+        default:                        switch_${name}_gfx;
+    }
+}
