@@ -47,7 +47,7 @@ for row in incsv:
         vehs.append(row)
 
 
-template = PageTemplateFile('tram_temp.tnml')
+template = PageTemplateFile('templates/tram_temp.tnml')
 
 vehobjs = {}
 for veh in vehs:

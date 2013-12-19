@@ -50,6 +50,33 @@ spritegroup spritegroup_variotram_2cc_3 {
 }
 
 
+
+    
+    5: switch_variotram_eip;
+    
+
+
+
+    
+    5: switch_variotram_eip;
+    
+
+
+switch(FEAT_ROADVEHS, SELF, switch_variotram_colour_mapping_2cc_default, cargo_subtype) {
+    1: recolour_vario;
+    <metal:block use-macro="templates/metal_macros/recolour_randoms"]"/>
+}
+
+switch(FEAT_ROADVEHS, SELF, switch_variotram_colour_mapping_realistic_default, cargo_subtype) {
+    0: recolour_vario;
+    <metal:block use-macro="templates/metal_macros/recolour_randoms"]"/>
+}
+
+switch(FEAT_ROADVEHS, SELF, switch_variotram_colour_mapping_check, param_default_livery) {
+    1: switch_variotram_colour_mapping_realistic_default;
+    switch_variotram_colour_mapping_2cc_default;
+}
+
 item(FEAT_ROADVEHS, item_variotram, 89) {
     property {
         name:                           string(STR_NAME_variotram);
@@ -78,12 +105,13 @@ item(FEAT_ROADVEHS, item_variotram, 89) {
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
         cargo_capacity:                 21;
-        visual_effect:                  0;
+        visual_effect:                  visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
         length:                         5;
     }
 
     graphics {
         cargo_capacity:                 21;
-        default:                        switch_variotram_gfx;
+        colour_mapping:                 switch_variotram_colour_mapping;
+        default:                        switch_variotram_2cc;
     }
 }

@@ -1,0 +1,39 @@
+// CC blue to CC green
+recolour_hkl_green = reserve_sprites(1);
+replace(recolour_hkl_green) {
+    recolour_sprite {
+        0xC6..0xCD: 0x50..0x57;
+    }
+}
+
+// CC blue to pale green
+recolour_vario_green = reserve_sprites(1);
+replace(recolour_vario_green) {
+    recolour_sprite {
+        0xC6..0xCD: 0x60..0x67;
+    }
+}
+
+// CC green to bright yellow
+recolour_hkl_yellow = reserve_sprites(1);
+replace(recolour_hkl_yellow) {
+    recolour_sprite {
+        0x50..0x52: 0x40..0x42;
+        0x53: 0x32;
+        0x54: 0x43;
+        0x55: 0x33;
+        0x56..0x57: 0x44..0x45;
+    }
+}
+
+// CC green to cream
+recolour_valmet_cream = reserve_sprites(1);
+replace(recolour_valmet_cream) {
+    recolour_sprite {
+        0x50..0x57: 0x20..0x27;
+    }
+}
+
+recolour_hkl = recolour_hkl_green + recolour_hkl_yellow;
+recolour_vario = recolour_vario_green + recolour_hkl_yellow;
+recolour_valmet = recolour_hkl_green + recolour_valmet_cream;

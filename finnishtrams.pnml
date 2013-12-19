@@ -1,14 +1,9 @@
 // List of source files included from main file
 #include "src/header.pnml"
-
 #include "src/cargotable.pnml"
-
 #include "src/sprite_templates.pnml"
+#include "src/recolour_sprites.pnml"
 
 #include "src/horse.pnml"
 
 //#include "src/global_switches.pnml"
-
-//#include "src/tram_template.pnml"
-
-//#include "src/tram_generator.pnml"

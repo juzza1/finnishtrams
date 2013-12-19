@@ -1,6 +1,0 @@
-//TYPE                      (id,            int,    ml,     pur,    run,    speed,  power,  wght,   te,     capa,   lenghts,    rows,       consist length  )
-
-TRAM_NON_ARTICULATED        (hkl_2_axle,    0,      255,    0,      0,      20,     1000,   1,      0.3,    10,     6                                       )
-TRAM_ARTICULATED_5_PARTS    (variotram,     1998,   255,    0,      0,      70,     500,    35,     0.3,    25,     4,2,2,2,3,  0,1,2,1,3,  5               )
-
-TRAM_ARTICULATED_3_PARTS    (arctic,        2011,   255,    0,      0,      80,     600,    42,     0.3,    50,     5,5,5,      0,1,2,      3               )

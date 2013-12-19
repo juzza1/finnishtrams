@@ -1,18 +1,41 @@
 <!--! Generate articulated switches only if consist is longer than 1 -->
-<tal:articulated_switches condition="len(consinfo) > 1">
+<tal:block condition="len(consinfo) > 1">
 switch(FEAT_ROADVEHS, SELF, switch_${name}_2cc, position_in_consist % ${len(consinfo)}) {
-    <tal:sprites repeat="pos consinfo">
+    <tal:block repeat="pos consinfo">
     ${repeat.pos.index}: spritegroup_${name}_2cc_${consinfo[repeat.pos.index][3]};
-    </tal:sprites>
+    </tal:block>
 }
-</tal:articulated_switches>
+</tal:block>
 
-<tal:spritegroups repeat="pos consinfo">
+<tal:block repeat="pos consinfo">
 spritegroup spritegroup_${name}_2cc_${consinfo[repeat.pos.index][3]} {
     loading: spriteset_${name}_2cc_loading_${consinfo[repeat.pos.index][3]};
     loaded: spriteset_${name}_2cc_loaded_${consinfo[repeat.pos.index][3]};
 }
-</tal:spritegroups>
+</tal:block>
+
+<metal:block define-macro="moro">
+    <tal:block condition="refit_gfx" repeat="gfx refit_gfx">
+    ${repeat.gfx.index + 5}: switch_${name}_${gfx};
+    </tal:block>
+</metal:block>
+
+<metal:block use-macro="template.macros['moro']"/>
+
+switch(FEAT_ROADVEHS, SELF, switch_${name}_colour_mapping_2cc_default, cargo_subtype) {
+    1: recolour_${recolour};
+    <metal:block use-macro="metal_macros.pt/recolour_randoms"/>
+}
+
+switch(FEAT_ROADVEHS, SELF, switch_${name}_colour_mapping_realistic_default, cargo_subtype) {
+    0: recolour_${recolour};
+    <metal:block use-macro="metal_macros.pt/recolour_randoms"/>
+}
+
+switch(FEAT_ROADVEHS, SELF, switch_${name}_colour_mapping_check, param_default_livery) {
+    1: switch_${name}_colour_mapping_realistic_default;
+    switch_${name}_colour_mapping_2cc_default;
+}
 
 item(FEAT_ROADVEHS, item_${name}, ${num_id}) {
     property {
@@ -42,12 +65,13 @@ item(FEAT_ROADVEHS, item_${name}, ${num_id}) {
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
         cargo_capacity:                 ${cargo_capacity};
-        visual_effect:                  ${visual_effect};
+        visual_effect:                  visual_effect(${visual_effect_type}, ${visual_effect_offset});
         length:                         ${length};
     }
 
     graphics {
         cargo_capacity:                 ${cargo_capacity};
-        default:                        switch_${name}_gfx;
+        colour_mapping:                 switch_${name}_colour_mapping;
+        default:                        switch_${name}_2cc;
     }
 }

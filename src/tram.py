@@ -16,7 +16,7 @@ class Tram(object):
         "Parse misc. flags"
         outflags = []
         ottdflags = [
-            'ROADVEH_FLAG_TRAM' ,
+            'ROADVEH_FLAG_TRAM',
             'ROADVEH_FLAG_2CC',
             'ROADVEH_FLAG_AUTOREFIT',
             'ROADVEH_FLAG_NO_BREAKDOWN_SMOKE']
@@ -53,8 +53,23 @@ class Tram(object):
                 part.append(j[enum])
             cons.append(part)
         # Length of this list = the amount of parts in the consist
-        print length
         return cons
+
+    def ParseVisual(self, visual): 
+        ottdvisuals = [
+            'VISUAL_EFFECT_DEFAULT',
+            'VISUAL_EFFECT_STEAM',
+            'VISUAL_EFFECT_DIESEL',
+            'VISUAL_EFFECT_ELECTRIC',
+            'VISUAL_EFFECT_DISABLE']
+        visual = visual.upper() 
+        outvisual = ottdvisuals[4]
+        print visual
+        for i in ottdvisuals:
+            if visual in i:
+                outvisual = i
+                break
+        return outvisual
 
     def __init__(self, **kwargs):
         "Get values from csv"
@@ -68,8 +83,8 @@ class Tram(object):
         self.loading_speed = kwargs.get('load_speed', '5')
         self.cost_factor = kwargs.get('cost_factor', '0')
         self.running_cost_factor = kwargs.get('run_cost_factor', '0')
-        self.speed = kwargs.get('speed', '100 km/h')
-        self.power = kwargs.get('power', '100 hpM')
+        self.speed = kwargs.get('speed', '0 km/h')
+        self.power = kwargs.get('power', '0 hpM')
         self.weight = kwargs.get('weight', '1 ton')
         self.te_coef = kwargs.get('te_coef', '0.3')
         # Additional values
@@ -77,12 +92,12 @@ class Tram(object):
         self.flags = kwargs.get('flags', '')
         self.capacity = kwargs.get('capacity', '0')
         self.lengths = kwargs.get('lengths', '8')
-        self.refit_gfx = kwargs.get('refit_gfx', '')
+        self.refit_gfx = Listify(kwargs.get('refit_gfx', ''))
         self.visual_sfx_type = kwargs.get('visual_sfx_type', 'disable')
         self.visual_sfx_enabled = kwargs.get('visual_sfx_enabled', '0')
         self.visual_sfx_offset = kwargs.get('visual_sfx_offset', '0')
         self.sprite_rows = kwargs.get('sprite_rows', '0')
-        self.recolor = kwargs.get('recolor', '')
+        self.recolour = kwargs.get('recolour', '')
         # Parse consist info. Length is len(consinfo)
         self.consinfo = self.ConsistInfo(self.lengths,
                                          self.visual_sfx_enabled,
@@ -92,7 +107,8 @@ class Tram(object):
         self.misc_flags = self.ParseFlags(self.flags)
         # Capacity is (capacity from csv / number of parts in consist)
         self.cargo_capacity =int(round(int(self.capacity) / len(self.consinfo)))
-        self.visual_effect = 0
+        self.visual_effect_type = self.ParseVisual(self.visual_sfx_type)
+        self.visual_effect_offset = self.consinfo[0][3]
         # Length property is taken from first element of consist info
         self.length = self.consinfo[0][0]
 

@@ -32,6 +32,33 @@ spritegroup spritegroup_arctic_2cc_2 {
 }
 
 
+
+    
+    5: switch_arctic_;
+    
+
+
+
+    
+    5: switch_arctic_;
+    
+
+
+switch(FEAT_ROADVEHS, SELF, switch_arctic_colour_mapping_2cc_default, cargo_subtype) {
+    1: recolour_hkl;
+    <metal:block use-macro="templates/metal_macros/recolour_randoms"]"/>
+}
+
+switch(FEAT_ROADVEHS, SELF, switch_arctic_colour_mapping_realistic_default, cargo_subtype) {
+    0: recolour_hkl;
+    <metal:block use-macro="templates/metal_macros/recolour_randoms"]"/>
+}
+
+switch(FEAT_ROADVEHS, SELF, switch_arctic_colour_mapping_check, param_default_livery) {
+    1: switch_arctic_colour_mapping_realistic_default;
+    switch_arctic_colour_mapping_2cc_default;
+}
+
 item(FEAT_ROADVEHS, item_arctic, 90) {
     property {
         name:                           string(STR_NAME_arctic);
@@ -60,12 +87,13 @@ item(FEAT_ROADVEHS, item_arctic, 90) {
         air_drag_coefficient:           0;
         default_cargo_type:             PASS;
         cargo_capacity:                 50;
-        visual_effect:                  0;
+        visual_effect:                  visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
         length:                         5;
     }
 
     graphics {
         cargo_capacity:                 50;
-        default:                        switch_arctic_gfx;
+        colour_mapping:                 switch_arctic_colour_mapping;
+        default:                        switch_arctic_2cc;
     }
 }

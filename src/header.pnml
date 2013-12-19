@@ -14,8 +14,9 @@ grf {
             max_value: 1;
             def_value: 0;
             names: {
+                0: string(STR_PARAM_LIVERY_2CC);
+                1: string(STR_PARAM_LIVERY_REALISTIC);
                 0: string(STR_PARAM_LIVERY_REALISTIC);
-                1: string(STR_PARAM_LIVERY_2CC);
             };
         }
     }
