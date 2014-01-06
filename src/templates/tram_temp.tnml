@@ -24,12 +24,12 @@ spritegroup spritegroup_${name}_2cc_${consinfo[repeat.pos.index][3]} {
 
 switch(FEAT_ROADVEHS, SELF, switch_${name}_colour_mapping_2cc_default, cargo_subtype) {
     1: recolour_${recolour};
-    <metal:block use-macro="metal_macros.pt/recolour_randoms"/>
+    <metal:block use-macro="load: metal_macros.pt"/>
 }
 
 switch(FEAT_ROADVEHS, SELF, switch_${name}_colour_mapping_realistic_default, cargo_subtype) {
     0: recolour_${recolour};
-    <metal:block use-macro="metal_macros.pt/recolour_randoms"/>
+    <metal:block use-macro="load: metal_macros.pt"/>
 }
 
 switch(FEAT_ROADVEHS, SELF, switch_${name}_colour_mapping_check, param_default_livery) {

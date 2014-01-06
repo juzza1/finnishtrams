@@ -39,23 +39,28 @@ incsv = DictReader(getcsv, delimiter=',', quotechar='"')
 
 vehs = []
 for row in incsv:
-    name = row['name']
+    # Delete uppercase rows
+    #for col in row:
+    #    print col
+    #    if col[0].upper():
+    #        del row[col]
     # Rows with empty "name" cell are ignored
-    if not name:
-        pass
+    if not row['name']:
+        continue
     else:
         vehs.append(row)
 
+print vehs
 
-template = PageTemplateFile('templates/tram_temp.tnml')
+#template = PageTemplateFile('templates/tram_temp.tnml')
 
-vehobjs = {}
-for veh in vehs:
-    name = veh['name']
-    tram = Tram(**veh)
-    vehobjs[name] = tram
-    with open('generated/trams/' + name + '.pnml', 'wb') as out:
-        out.write(template.render(**tram.__dict__))
+#vehobjs = {}
+#for veh in vehs:
+#    name = veh['name']
+#    tram = Tram(**veh)
+#    vehobjs[name] = tram
+#    with open('generated/trams/' + name + '.pnml', 'wb') as out:
+#        out.write(template.render(**tram.__dict__))
 
 
 #print vehobjs
