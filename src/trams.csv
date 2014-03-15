@@ -1,4 +1,0 @@
-id,name,long_name,type,intr,power,speed,Te (kn),te_coef,weight,Pur. cost,cost_factor,Run. cost,run_cost_factor,model_life,vehicle_life,reliability_decay,length,flags,capacity,no_refit_gfx,visual_sfx_type,visual_sfx_enabled,visual_sfx_offset,recolor
-1,asea,Asea,tram,1930,680 kW,60 km/h,,0.3,12 ton,0,0,0,0,VEHICLE_NEVER_EXPIRES,255,20,5,"tram,2cc",50,0,electric,1,0,basic
-2,variotram,Variotram,tram,1998,540 kW,70 km/h,,0.3,35 ton,0,0,0,0,VEHICLE_NEVER_EXPIRES,255,20,"5,2,2,2,4","tram,2cc","25,25,25,25,25",0,electric,"1,0,0,0,0","0,0,0,0,0",vario
-3,arctic,Arctic,tram,2013,680 kW,80 km/h,,0.3,42 ton,0,0,0,0,VEHICLE_NEVER_EXPIRES,255,20,"5,5,5","tram,2cc","50,50,50",0,electric,"1,0,0","0,0,0",basic

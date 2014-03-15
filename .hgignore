@@ -1,12 +1,14 @@
 syntax: glob
 
 *~
-*.swp
-*.png
-*.scm
 *.nml
-*.tar
+*.old
+*.png
 *.pyc
+*.scm
+*.swp
+*.tar
+build/*
 custom_tags.txt
 docs/readme.txt
 finnishtrams/
