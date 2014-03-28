@@ -2,6 +2,7 @@ from string import Template
 
 from cargos import Cargos
 import generic_functions as gen
+from block_templates import spritegroup, spriteset, switch
 
 class Tram(object):
     
@@ -33,9 +34,11 @@ class Tram(object):
         self.real_livery = kwargs.get('real_livery')
         self.refit_livery = kwargs.get('refit_livery')
         self.capacity = kwargs.get('capacity', '0')
+        self.refit_livery = gen.to_list(kwargs.get('refit_livery'))
         self.length = gen.to_list(kwargs.get('length', '8'))
         self.visual_eff = kwargs.get('visual_eff')
-        self.visual_eff_offset = gen.to_list(kwargs.get('visual_eff_offset', '0'))
+        self.visual_eff_offset = gen.to_list(kwargs.get('visual_eff_offset',
+                                                        '0'))
         self.articulated_id = gen.to_list(kwargs.get('articulated_id'))
         self.sprite_src = gen.to_list(kwargs.get('sprite_src'))
         self.sprite_row = gen.to_list(kwargs.get('sprite_row', '0'))
@@ -91,27 +94,34 @@ class Tram(object):
     def sprites_out(self, f, gfxpath):
         """Write & parse spritesets and spritegroups"""
         # Purchase window sprite
-        f.write((
-                 'spriteset(spriteset_{0}_purchase, "{1}{0}_loaded.png") {{ '
-                 'template_purchase() }}\n'
-                ).format(self.name, gfxpath))
+        f.write(spriteset(self.name,
+                          'purchase',
+                          gfxpath + self.name + '_loaded.png',
+                          'template_purchase'))
 
         # Spritesets and groups for each articulated part
-        for i, (l, s, r) in enumerate(zip(self.length, self.sprite_src,
+        for i, (length, s, row) in enumerate(zip(self.length, self.sprite_src,
                                           self.sprite_row)):
-            spr = (
-                   'spriteset(spriteset_{0}_{6}_{2}, "{1}{4}_{6}.png") {{ '
-                   'template_tram({3}, {5}) }}\n'
-                  )
-            sprgrp = (
-                      'spritegroup spritegroup_{0}_{1} {{\n'
-                      'loading: spriteset_{0}_loading_{1};\n'
-                      'loaded: spriteset_{0}_loaded_{1};\n'
-                      '}}\n'
-                     )
-            f.write(spr.format(self.name, gfxpath, i, l, s, r, 'loaded'))
-            f.write(spr.format(self.name, gfxpath, i, l, s, r, 'loading'))
-            f.write(sprgrp.format(self.name, i))
+
+            f.write(spriteset(self.name,
+                              'loaded_{}'.format(i),
+                              gfxpath + self.name + '_loaded.png',
+                              'template_tram',
+                              length,
+                              row))
+
+            f.write(spriteset(self.name,
+                              'loading_{}'.format(i),
+                              gfxpath + self.name + '_loading.png',
+                              'template_tram',
+                              length,
+                              row))
+
+            f.write(spritegroup(self.name,
+                                i,
+                                'loading_{}'.format(i),
+                                'loaded_{}'.format(i)))
+
 
         # Gfx switch only needed for articulated vehicle
         if self.length > 1:
@@ -132,7 +142,9 @@ class Tram(object):
                      'cargo_subtype) {{\n'
                     ).format(self.name, col))
             for j, liv in enumerate(self.refit_livery):
-                f.write('switch_{0}_refit_{1}').format(self.name, liv)
+                f.write('switch_{0}_refit_{1}\n'.format(self.name, liv))
+            
+            f.write('}\n')
 
         f.write((
                  'switch(FEAT_ROADVEH, SELF, switch_{0}_recolour, '

@@ -3,7 +3,7 @@ def write_basecosts(costs, path):
         f.write("basecost {\n")
         for row in costs:
             if 'PR' in row['id']:
-                f.write('%s: %s;\n' % (row['id'], row['value']))
+                f.write('%s: %s;\n' % (row['id'], row['multiplier']))
             else:
                 continue
         f.write('}')
