@@ -7,3 +7,4 @@ def write_basecosts(costs, path):
             else:
                 continue
         f.write('}')
+#
