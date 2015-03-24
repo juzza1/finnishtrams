@@ -16,13 +16,7 @@ grf {
             names: {
                 0: string(STR_PARAM_LIVERY_2CC);
                 1: string(STR_PARAM_LIVERY_REALISTIC);
-                0: string(STR_PARAM_LIVERY_REALISTIC);
             };
         }
     }
 }
-
-
-//fix depot view
-train_width_32_px = 1;
-traininfo_y_offset = 2;

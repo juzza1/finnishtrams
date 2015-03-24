@@ -1,9 +1,0 @@
-<!--! Metal macros are defined in a separate file, because they are always
-    expanded in the template. This causes unwanted stuff to appear in the
-    rendered output -->
-
-<metal:block define-macro="recolour_randoms">                                   
-    2: random_switch_recolour_2cc;                                              
-    3: random_switch_recolour_1cc;                                              
-    4: random_switch_recolour_all;                                              
-</metal:block>

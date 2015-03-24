@@ -1,0 +1,6 @@
+make-nml-juzza1-common = make-nml-juzza1-common
+
+[subpaths]
+ssh://hg@hg.openttdcoop.org/finnishtrams/make-nml-juzza1-common = ssh://hg@hg.openttdcoop.org/make-nml-juzza1-common
+http://hg.openttdcoop.org/finnishtrams/make-nml-juzza1-common = http://hg.openttdcoop.org/make-nml-juzza1-common
+finnishtrams/make-nml-juzza1-common = make-nml-juzza1-common
