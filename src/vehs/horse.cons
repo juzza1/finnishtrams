@@ -1,0 +1,145 @@
+z1 horse.xcf;
+z4 horse.blend;
+
+spr spr_pur_2cc(purchase) {
+    z1: wagon_closed, pur_sep;
+    z4: 1 2, 128, gen-mask; }
+spr spr_pur_real(purchase) {
+    z1: wagon_closed, pur_sep;
+    z4: 1 2, 128; }
+spr spr_wagon_2cc_closed(3) {
+    z1: wagon_closed;
+    z4: 2, 0-7, gen-mask; }
+spr spr_wagon_real_closed(3) {
+    z1: wagon_closed;
+    z4: 2, 0-7; }
+spr spr_wagon_2cc_open(3) {
+    z1: wagon_open;
+    z4: 2, 0-7, gen-mask; }
+spr spr_wagon_real_open(3) {
+    z1: wagon_open;
+    z4: 2, 0-7; }
+spr spr_horse_idle(3) {
+    z1: horse_idle;
+    z4: 1, 0 16 32 48 64 80 96 112; }
+spr spr_horse_anim_1(3) {
+    z1: horse_idle;
+    z4: 1, 0 16 32 48 66 80 96 112; }
+spr spr_horse_anim_2(3) {
+    z1: horse_idle;
+    z4: 1, 1 17 33 49 67 81 97 113; }
+spr spr_horse_anim_3(3) {
+    z1: horse_idle;
+    z4: 1, 2 18 34 50 68 82 98 114; }
+spr spr_horse_anim_4(3) {
+    z1: horse_idle;
+    z4: 1, 3 19 35 51 69 83 99 115; }
+spr spr_horse_anim_5(3) {
+    z1: horse_anim_1;
+    z4: 1, 4 20 36 52 70 84 100 116; }
+spr spr_horse_anim_6(3) {
+    z1: horse_anim_1;
+    z4: 1, 5 21 37 53 71 85 101 117; }
+spr spr_horse_anim_7(3) {
+    z1: horse_anim_1;
+    z4: 1, 6 22 38 54 72 86 102 118; }
+spr spr_horse_anim_8(3) {
+    z1: horse_anim_1;
+    z4: 1, 7 23 39 55 73 87 103 119; }
+spr spr_horse_anim_9(3) {
+    z1: horse_anim_2;
+    z4: 1, 8 24 40 56 74 88 104 120; }
+spr spr_horse_anim_10(3) {
+    z1: horse_anim_2;
+    z4: 1, 9 25 41 57 75 89 105 121; }
+spr spr_horse_anim_11(3) {
+    z1: horse_anim_2;
+    z4: 1, 10 26 42 58 76 90 106 122; }
+spr spr_horse_anim_12(3) {
+    z1: horse_anim_2;
+    z4: 1, 11 27 43 59 77 91 107 123; }
+spr spr_horse_anim_13(3) {
+    z1: horse_anim_3;
+    z4: 1, 12 28 44 60 78 92 108 124; }
+spr spr_horse_anim_14(3) {
+    z1: horse_anim_3;
+    z4: 1, 13 29 45 61 79 93 109 125; }
+spr spr_horse_anim_15(3) {
+    z1: horse_anim_3;
+    z4: 1, 14 30 46 62 80 94 110 126; }
+spr spr_horse_anim_16(3) {
+    z1: horse_anim_3;
+    z4: 1, 15 31 47 63 81 95 111 127; }
+
+switch (FEAT_ROADVEH, SELF, pur_gfx, param_default_livery) {
+    0: SPR_PUR_2CC;
+    1: SPR_PUR_REAL; }
+
+switch (FEAT_ROADVEH, SELF, horse_anim, motion_counter) {
+    0: SPR_HORSE_ANIM_1;
+    1: SPR_HORSE_ANIM_2;
+    2: SPR_HORSE_ANIM_3;
+    3: SPR_HORSE_ANIM_4;
+    4: SPR_HORSE_ANIM_5;
+    5: SPR_HORSE_ANIM_6;
+    6: SPR_HORSE_ANIM_7;
+    7: SPR_HORSE_ANIM_8;
+    8: SPR_HORSE_ANIM_9;
+    9: SPR_HORSE_ANIM_10;
+    10: SPR_HORSE_ANIM_11;
+    11: SPR_HORSE_ANIM_12;
+    12: SPR_HORSE_ANIM_13;
+    13: SPR_HORSE_ANIM_14;
+    14: SPR_HORSE_ANIM_15;
+    15: SPR_HORSE_ANIM_16; }
+switch (FEAT_ROADVEH, SELF, horse_state, current_speed) {
+    0: SPR_HORSE_IDLE;
+    default: horse_anim; }
+
+spritegroup wagon_state_2cc {
+    loading: SPR_WAGON_2CC_OPEN;
+    loaded: SPR_WAGON_2CC_CLOSED; }
+spritegroup wagon_state_real {
+    loading: SPR_WAGON_REAL_OPEN;
+    loaded: SPR_WAGON_REAL_CLOSED; }
+
+GEN_SUBTYPES(subtext, wagon_livery, wagon_state_2cc, wagon_state_real);
+
+switch (FEAT_ROADVEH, SELF, wagon_livery_2cc, cargo_subtype) {
+    0: wagon_state_2cc;
+    1: wagon_state_real; }
+switch (FEAT_ROADVEH, SELF, wagon_livery_real, cargo_subtype) {
+    0: wagon_state_real;
+    1: wagon_state_2cc; }
+switch (FEAT_ROADVEH, SELF, wagon_livery, param_default_livery) {
+    0: wagon_livery_2cc;
+    1: wagon_livery_real; }
+
+switch (FEAT_ROADVEH, SELF, subtext, cargo_subtype_def_2cc) {
+    0: string(STR_SUBTYPE_2CC);
+    1: string(STR_SUBTYPE_REAL); }
+
+PROPS {
+    cost_factor: 1;
+    intr_y: 1890; 
+    loading_speed: 5;
+    model_life: 15;
+    name: string(STR_HORSE_TRAM);
+    power: 10 hpM;
+    running_cost_factor: 1;
+    speed: 20 km/h;
+    vehicle_life: 10;
+    weight: 10 ton; }
+PART {
+    cargo_capacity: 0;
+    cargo_subtype_text: subtext;
+    default: horse_state;
+    length: 3;
+    purchase: pur_gfx;
+    visual_effect: visual_effect(VISUAL_EFFECT_DISABLE, 0); }
+PART {
+    cargo_capacity: 15;
+    colour_mapping: RECOLOUR_BASIC;
+    default: wagon_livery;
+    length: 3;
+    visual_effect: visual_effect(VISUAL_EFFECT_DISABLE, 0); }
