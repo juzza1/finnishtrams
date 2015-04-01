@@ -1,6 +1,8 @@
 syntax: glob
 
+# Intermediate and temp files
 *~
+*.blend1
 *.nml
 *.old
 *.png
@@ -8,6 +10,7 @@ syntax: glob
 *.scm
 *.swp
 *.tar
+
 build/*
 custom_tags.txt
 docs/readme.txt
