@@ -2,20 +2,20 @@ grf {
     grfid: "JV\03\01";
     name: string(STR_GRF_NAME);
     desc: string(STR_GRF_DESCRIPTION);
-    version: NEWGRF_VERSION;
+    version: GRF_VERSION;
     min_compatible_version: 1;
 
     param 1 {
         param_default_livery {
             type: int;
-            name: string(STR_PARAM_DEFAULT_LIVERY);
+            name: string(STR_PARAM_DEFAULT_LIVERY_NAME);
             desc: string(STR_PARAM_DEFAULT_LIVERY_DESC);
             min_value: 0;
             max_value: 1;
             def_value: 0;
             names: {
-                0: string(STR_PARAM_LIVERY_2CC);
-                1: string(STR_PARAM_LIVERY_REALISTIC);
+                0: string(STR_PARAM_DEFAULT_LIVERY_OPT_2CC);
+                1: string(STR_PARAM_DEFAULT_LIVERY_OPT_REALISTIC);
             };
         }
     }

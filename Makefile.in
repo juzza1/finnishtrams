@@ -1,0 +1,3 @@
+GFX_DEP := $(SRC_DIR)/gfx.mk
+include $(GFX_DEP)
+$(GFX_ALL): $(GFX_DEP)
