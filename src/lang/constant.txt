@@ -5,3 +5,5 @@ STR_NAME_TEST4  :4lu test tram
 STR_NAME_TEST6  :6lu test tram
 STR_NAME_TEST6A :6lu articulated test tram
 STR_NAME_TEST8  :8lu test tram
+
+STR_NAME_ARCTIC :MLNRV3 "Arctic"

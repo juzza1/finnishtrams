@@ -1,0 +1,51 @@
+spriteset(spr_arctic_front, "build/arctic_front.png") {
+    tmpl_def(5)
+}
+spriteset(spr_arctic_middle, "build/arctic_middle.png") {
+    tmpl_def(5)
+}
+spriteset(spr_arctic_rear, "build/arctic_rear.png") {
+    tmpl_def(5)
+}
+
+switch (FEAT_ROADVEHS, SELF, sw_arctic_arti, extra_callback_info1) {
+    1..2: arctic;
+    CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_ROADVEHS, SELF, sw_arctic_gfx, position_in_consist) {
+    0: spr_arctic_front;
+    1: spr_arctic_middle;
+    2: spr_arctic_rear;
+}
+    
+
+item (FEAT_ROADVEHS, arctic) {
+    property {
+        cargo_allow_refit: [PASS, TOUR];
+        cargo_capacity: 1;
+        cargo_disallow_refit: [];
+        climates_available: ALL_CLIMATES;
+        cost_factor: 0;
+        default_cargo_type: PASS;
+        introduction_date: date(0,01,01);
+        length: 5;
+        loading_speed: 5;
+        name: string(STR_NAME_ARCTIC);
+        misc_flags: bitmask(ROADVEH_FLAG_TRAM);
+        model_life: VEHICLE_NEVER_EXPIRES;
+        non_refittable_cargo_classes: NO_CARGO_CLASS;
+        power: 500hp;
+        refit_cost: 0;
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        running_cost_base: RUNNING_COST_ROADVEH;
+        running_cost_factor: 0;
+        speed: 50km/h;
+        sprite_id: SPRITE_ID_NEW_ROADVEH;
+        weight: 10ton;
+    }
+    graphics {
+        articulated_part: sw_arctic_arti;
+        default: sw_arctic_gfx;
+    }
+}
