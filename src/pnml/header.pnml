@@ -20,3 +20,7 @@ grf {
         }
     }
 }
+
+cargotable {
+    PASS, TOUR
+}
