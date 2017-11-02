@@ -10,5 +10,5 @@ template tmpl_def(len) {
 }
 
 template tmpl_pur() {
-    [0, 50, 87, 18, 0, 0]
+    [0, 50, 87, 18, -14, -12]
 }

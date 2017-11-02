@@ -1,3 +1,6 @@
+spriteset(spr_mlnrviii_purchase, "build/mlnrviii_front.png") {
+    tmpl_pur()
+}
 spriteset(spr_mlnrviii_front, "build/mlnrviii_front.png") {
     tmpl_def(5)
 }
@@ -47,5 +50,6 @@ item (FEAT_ROADVEHS, mlnrviii) {
     graphics {
         articulated_part: sw_mlnrviii_arti;
         default: sw_mlnrviii_gfx;
+        purchase: spr_mlnrviii_purchase;
     }
 }
