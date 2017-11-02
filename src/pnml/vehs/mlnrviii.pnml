@@ -6,7 +6,7 @@ SPR(ID(spr_middle), "build/mlnrviii_middle.png", 5)
 SPR(ID(spr_rear), "build/mlnrviii_rear.png", 5)
 
 SWITCH(ID(sw_arti), extra_callback_info1,
-    1..2: ID(item);
+    1..2: VEH;
     CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 )
 SWITCH(ID(sw_cst), cargo_subtype,
@@ -20,8 +20,8 @@ SWITCH(ID(sw_gfx), position_in_consist,
     2: ID(spr_rear);
 )
 
-PROPS_COMMON(ID(item))
-PROPS(ID(item),
+PROPS_COMMON(VEH)
+PROPS(VEH,
     cargo_capacity: 25;
     cost_factor: 0;
     introduction_date: date(0,01,01);
@@ -33,7 +33,7 @@ PROPS(ID(item),
     speed: 80km/h;
     weight: 10ton;
 )
-GFX(ID(item),
+GFX(VEH,
     articulated_part: ID(sw_arti);
     cargo_subtype_text: ID(sw_cst);
     colour_mapping: sw_recolour_hkl;
