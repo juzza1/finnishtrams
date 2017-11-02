@@ -9,6 +9,11 @@ SWITCH(ID(sw_arti), extra_callback_info1,
     1..2: ID(item);
     CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 )
+SWITCH(ID(sw_cst), cargo_subtype,
+    0: string(STR_SUBTYPE_LIVERY_2CC);
+    1: string(STR_SUBTYPE_LIVERY_REALISTIC);
+    CB_RESULT_NO_TEXT;
+)
 SWITCH(ID(sw_gfx), position_in_consist,
     0: ID(spr_front);
     1: ID(spr_middle);
@@ -17,6 +22,7 @@ SWITCH(ID(sw_gfx), position_in_consist,
 
 PROPS_COMMON(ID(item))
 PROPS(ID(item),
+    cargo_capacity: 25;
     cost_factor: 0;
     introduction_date: date(0,01,01);
     length: 5;
@@ -29,7 +35,8 @@ PROPS(ID(item),
 )
 GFX(ID(item),
     articulated_part: ID(sw_arti);
-    cargo_capacity: 10;
+    cargo_subtype_text: ID(sw_cst);
+    colour_mapping: sw_recolour_hkl;
     default: ID(sw_gfx);
     purchase: ID(spr_pur);
 )
