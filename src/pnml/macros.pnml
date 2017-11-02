@@ -1,0 +1,46 @@
+/*
+    To anyone wtfing at the multiple levels of indirection:
+    https://stackoverflow.com/questions/1489932/how-to-concatenate-twice-with-the-c-preprocessor-and-expand-a-macro-as-in-arg
+*/
+
+#define ID__(veh, name) veh ## _ ## name
+#define ID_(veh, name) ID__(veh, name)
+#define ID(name) ID_(VEH, name)
+
+#define SWITCH(block_id, var, ...) \
+switch(FEAT_ROADVEHS, SELF, block_id, var) { \
+    __VA_ARGS__ \
+}
+
+#define PROPS_COMMON(block_id) \
+item (FEAT_ROADVEHS, block_id) { \
+    property { \
+        cargo_allow_refit: []; \
+        cargo_capacity: 0; \
+        cargo_disallow_refit: []; \
+        climates_available: ALL_CLIMATES; \
+        default_cargo_type: PASS; \
+        loading_speed: 5; \
+        misc_flags: bitmask(ROADVEH_FLAG_2CC, ROADVEH_FLAG_AUTOREFIT, \
+                            ROADVEH_FLAG_TRAM); \
+        non_refittable_cargo_classes: NO_CARGO_CLASS; \
+        refit_cost: 0; \
+        refittable_cargo_classes: bitmask(CC_PASSENGERS); \
+        running_cost_base: RUNNING_COST_ROADVEH; \
+        sprite_id: SPRITE_ID_NEW_ROADVEH; \
+    } \
+}
+
+#define PROPS(block_id, ...) \
+item (FEAT_ROADVEHS, block_id) { \
+    property { \
+        __VA_ARGS__ \
+    } \
+}
+
+#define GFX(block_id, ...) \
+item (FEAT_ROADVEHS, block_id) { \
+    graphics { \
+        __VA_ARGS__ \
+    } \
+}

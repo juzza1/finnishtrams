@@ -1,3 +1,4 @@
+#include "pnml/macros.pnml"
 #include "pnml/header.pnml"
 #include "pnml/templates.pnml"
 #include "pnml/recolour_sprites.pnml"

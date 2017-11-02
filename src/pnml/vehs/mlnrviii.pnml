@@ -1,55 +1,45 @@
-spriteset(spr_mlnrviii_purchase, "build/mlnrviii_front.png") {
+#define VEH mlnrviii
+
+spriteset(ID(spr_pur), "build/mlnrviii_front.png") {
     tmpl_pur()
 }
-spriteset(spr_mlnrviii_front, "build/mlnrviii_front.png") {
+spriteset(ID(spr_front), "build/mlnrviii_front.png") {
     tmpl_def(5)
 }
-spriteset(spr_mlnrviii_middle, "build/mlnrviii_middle.png") {
+spriteset(ID(spr_middle), "build/mlnrviii_middle.png") {
     tmpl_def(5)
 }
-spriteset(spr_mlnrviii_rear, "build/mlnrviii_rear.png") {
+spriteset(ID(spr_rear), "build/mlnrviii_rear.png") {
     tmpl_def(5)
 }
 
-switch (FEAT_ROADVEHS, SELF, sw_mlnrviii_arti, extra_callback_info1) {
-    1..2: mlnrviii;
+SWITCH(ID(sw_arti), extra_callback_info1,
+    1..2: ID(item);
     CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
+)
+SWITCH(ID(sw_gfx), position_in_consist,
+    0: ID(spr_front);
+    1: ID(spr_middle);
+    2: ID(spr_rear);
+)
 
-switch (FEAT_ROADVEHS, SELF, sw_mlnrviii_gfx, position_in_consist) {
-    0: spr_mlnrviii_front;
-    1: spr_mlnrviii_middle;
-    2: spr_mlnrviii_rear;
-}
-    
+PROPS_COMMON(ID(item))
+PROPS(ID(item),
+    cost_factor: 0;
+    introduction_date: date(0,01,01);
+    length: 5;
+    name: string(STR_NAME_MLNRVIII);
+    model_life: VEHICLE_NEVER_EXPIRES;
+    power: 500hp;
+    running_cost_factor: 0;
+    speed: 80km/h;
+    weight: 10ton;
+)
+GFX(ID(item),
+    articulated_part: ID(sw_arti);
+    cargo_capacity: 10;
+    default: ID(sw_gfx);
+    purchase: ID(spr_pur);
+)
 
-item (FEAT_ROADVEHS, mlnrviii) {
-    property {
-        cargo_allow_refit: [PASS, TOUR];
-        cargo_capacity: 1;
-        cargo_disallow_refit: [];
-        climates_available: ALL_CLIMATES;
-        cost_factor: 0;
-        default_cargo_type: PASS;
-        introduction_date: date(0,01,01);
-        length: 5;
-        loading_speed: 5;
-        name: string(STR_NAME_MLNRVIII);
-        misc_flags: bitmask(ROADVEH_FLAG_TRAM);
-        model_life: VEHICLE_NEVER_EXPIRES;
-        non_refittable_cargo_classes: NO_CARGO_CLASS;
-        power: 500hp;
-        refit_cost: 0;
-        refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        running_cost_base: RUNNING_COST_ROADVEH;
-        running_cost_factor: 0;
-        speed: 50km/h;
-        sprite_id: SPRITE_ID_NEW_ROADVEH;
-        weight: 10ton;
-    }
-    graphics {
-        articulated_part: sw_mlnrviii_arti;
-        default: sw_mlnrviii_gfx;
-        purchase: spr_mlnrviii_purchase;
-    }
-}
+#undef VEH
