@@ -10,8 +10,8 @@ build/test_6a.png: src/gfx/xcf/vehs/testveh.xcf
 build/test_8.png: src/gfx/xcf/vehs/testveh.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 8
 build/mlnrviii_front.png: src/gfx/xcf/vehs/mlnrviii.xcf
-	$(XCFP) $(XCFP_FLAGS) $@ $< bg front cat
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 panto
 build/mlnrviii_middle.png: src/gfx/xcf/vehs/mlnrviii.xcf
-	$(XCFP) $(XCFP_FLAGS) $@ $< bg middle
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2
 build/mlnrviii_rear.png: src/gfx/xcf/vehs/mlnrviii.xcf
-	$(XCFP) $(XCFP_FLAGS) $@ $< bg rear
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 3
