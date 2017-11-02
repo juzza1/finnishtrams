@@ -32,7 +32,6 @@ spriteset(block_id, image) { \
 item (FEAT_ROADVEHS, block_id) { \
     property { \
         cargo_allow_refit: []; \
-        cargo_capacity: 0; \
         cargo_disallow_refit: []; \
         climates_available: ALL_CLIMATES; \
         default_cargo_type: PASS; \
@@ -42,7 +41,26 @@ item (FEAT_ROADVEHS, block_id) { \
         non_refittable_cargo_classes: NO_CARGO_CLASS; \
         refit_cost: 0; \
         refittable_cargo_classes: bitmask(CC_PASSENGERS); \
+        reliability_decay: 20; \
         running_cost_base: RUNNING_COST_ROADVEH; \
+        sprite_id: SPRITE_ID_NEW_ROADVEH; \
+        vehicle_life: 30; \
+    } \
+}
+#define PROPS_COMMON_ARTI(block_id) \
+item (FEAT_ROADVEHS, block_id) { \
+    property { \
+        cargo_allow_refit: []; \
+        cargo_disallow_refit: []; \
+        climates_available: NO_CLIMATE; \
+        default_cargo_type: PASS; \
+        loading_speed: 5; \
+        misc_flags: bitmask(ROADVEH_FLAG_2CC, ROADVEH_FLAG_AUTOREFIT, \
+                            ROADVEH_FLAG_TRAM); \
+        non_refittable_cargo_classes: NO_CARGO_CLASS; \
+        refit_cost: 0; \
+        refittable_cargo_classes: bitmask(CC_PASSENGERS); \
+        running_cost_base: RUNNING_COST_NONE; \
         sprite_id: SPRITE_ID_NEW_ROADVEH; \
     } \
 }
