@@ -43,6 +43,12 @@ td:not(:last-child) {{
 '''
 
 
+important_props = [
+    'id', 'cargo_capacity', 'cost_factor', 'introduction_date', 'length',
+    'model_life', 'power', 'running_cost_factor', 'speed', 'weight'
+]
+
+
 def dicts_to_table(dicts, keys=None):
     if not keys:
         keys = sorted({k for d in dicts for k in d})
@@ -96,4 +102,5 @@ if __name__ == "__main__":
             dicts[k]['id'] = k
             dicts_flat.append(dicts[k])
     with open(sys.argv[2], 'w') as f:
-        f.write(html_template.format(dicts_to_table(dicts_flat)))
+        f.write(
+            html_template.format(dicts_to_table(dicts_flat, important_props)))
