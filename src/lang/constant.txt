@@ -2,8 +2,10 @@ STR_GRF_NAME       :Finnish Trams {REPO_VERSION}
 STR_SUBTYPE_HELPER : ({STRING})
 
 STR_NAME_TEST4    :4lu test tram
+STR_NAME_TEST46W  :4lu test tram (thin)
 STR_NAME_TEST6    :6lu test tram
-STR_NAME_TEST6A   :6lu articulated test tram
+STR_NAME_TEST6A   :6lu test tram (2-part articulated)
 STR_NAME_TEST8    :8lu test tram
+STR_NAME_TEST86W  :8lu test tram (thin)
 
 STR_NAME_MLNRVIII :MLNRV III "Artic"
