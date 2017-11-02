@@ -1,0 +1,28 @@
+#! /usr/bin/env python3
+
+# Monkey patch for nml to correct display speed rounding errors,
+# until some nml dev fixes it in upstream
+
+from distutils.spawn import find_executable
+import os.path
+import sys
+
+sys.path.append(os.path.dirname(os.path.realpath(find_executable('nmlc'))))
+
+from nml import main
+
+def new_ottd_display_speed(value, divisor, unit):
+    return (int(value.value / divisor) * 10 * unit.ottd_mul \
+                >> unit.ottd_shift) // 16
+
+import nml.actions.action0properties
+nml.actions.action0properties.ottd_display_speed = new_ottd_display_speed
+nml.actions.action0properties.properties[0x10]['speed_limit'] = {
+    'size': 2, 'num': 0x14, 'unit_type': 'speed',
+    'unit_conversion': (5000, 1397),
+    'adjust_value': lambda val, unit: \
+        nml.actions.action0properties.ottd_display_speed(val, 1, unit)
+}
+
+if __name__ == "__main__":
+    main.run()

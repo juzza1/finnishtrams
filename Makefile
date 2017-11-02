@@ -63,7 +63,11 @@ REPLACE_REPO_VERSION := REPO_VERSION
 CC ?= cc
 CC_FLAGS ?= -C -E -nostdinc -x c-header
 HG ?= hg
+ifdef NMLC_MONKEY
+NML ?= ./nmlc_monkey
+else
 NML ?= nmlc
+endif
 NML_FLAGS ?= --custom-tags=$(CUSTOM_TAGS) --default-lang=$(DEFAULT_LANG) \
              --lang-dir=$(LANG_BUILD_DIR)
 
