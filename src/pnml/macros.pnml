@@ -1,8 +1,15 @@
 /*
+    Define VEH for each vehicle, then use ID(block_name) to get a block
+    name with the contents of VEH appended to block_name. You can
+    emulate a namespace for each vehicle this way.  Remember to unset
+    VEH at the end of vehicle declaration.
+*/
+
+
+/*
     To anyone wtfing at the multiple levels of indirection:
     https://stackoverflow.com/questions/1489932/how-to-concatenate-twice-with-the-c-preprocessor-and-expand-a-macro-as-in-arg
 */
-
 #define ID__(veh, name) veh ## _ ## name
 #define ID_(veh, name) ID__(veh, name)
 #define ID(name) ID_(VEH, name)
@@ -10,6 +17,15 @@
 #define SWITCH(block_id, var, ...) \
 switch(FEAT_ROADVEHS, SELF, block_id, var) { \
     __VA_ARGS__ \
+}
+
+#define SPR(block_id, image, length) \
+spriteset(block_id, image) { \
+    tmpl_def(length) \
+}
+#define SPR_PUR(block_id, image) \
+spriteset(block_id, image) { \
+    tmpl_pur() \
 }
 
 #define PROPS_COMMON(block_id) \
@@ -30,14 +46,12 @@ item (FEAT_ROADVEHS, block_id) { \
         sprite_id: SPRITE_ID_NEW_ROADVEH; \
     } \
 }
-
 #define PROPS(block_id, ...) \
 item (FEAT_ROADVEHS, block_id) { \
     property { \
         __VA_ARGS__ \
     } \
 }
-
 #define GFX(block_id, ...) \
 item (FEAT_ROADVEHS, block_id) { \
     graphics { \

@@ -1,17 +1,9 @@
 #define VEH mlnrviii
 
-spriteset(ID(spr_pur), "build/mlnrviii_front.png") {
-    tmpl_pur()
-}
-spriteset(ID(spr_front), "build/mlnrviii_front.png") {
-    tmpl_def(5)
-}
-spriteset(ID(spr_middle), "build/mlnrviii_middle.png") {
-    tmpl_def(5)
-}
-spriteset(ID(spr_rear), "build/mlnrviii_rear.png") {
-    tmpl_def(5)
-}
+SPR_PUR(ID(spr_pur), "build/mlnrviii_front.png")
+SPR(ID(spr_front), "build/mlnrviii_front.png", 5)
+SPR(ID(spr_middle), "build/mlnrviii_middle.png", 5)
+SPR(ID(spr_rear), "build/mlnrviii_rear.png", 5)
 
 SWITCH(ID(sw_arti), extra_callback_info1,
     1..2: ID(item);
