@@ -38,16 +38,16 @@ SWITCH(ID(sw_gfx), position_in_consist,
 
 PROPS_COMMON(VEH)
 PROPS(VEH,
-    cargo_capacity: 25;
+    cargo_capacity: 34;
     cost_factor: 0;
-    introduction_date: date(0,01,01);
+    introduction_date: date(2013,01,01);
     length: 5;
     name: string(STR_NAME_MLNRVIII);
     model_life: VEHICLE_NEVER_EXPIRES;
-    power: 500hp;
+    power: 8*65 kW;
     running_cost_factor: 0;
-    speed: 80km/h;
-    weight: 10ton;
+    speed: 80 km/h;
+    weight: 41.6 ton;
 )
 GFX(VEH,
     additional_text: MORE_TEXT("2", string(STR_D_MLNRVIII),

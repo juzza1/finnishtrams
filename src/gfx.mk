@@ -14,6 +14,27 @@ build/test_8.png: src/gfx/xcf/vehs/testveh.xcf
 build/test8_6w.png: src/gfx/xcf/vehs/testveh.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 8_6w
 
+
+build/a3.png: src/gfx/xcf/vehs/a3.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc panto
+build/a3_open.png: src/gfx/xcf/vehs/a3.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc doors panto
+
+build/a4.png: src/gfx/xcf/vehs/a4.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc panto
+build/a4_open.png: src/gfx/xcf/vehs/a4.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc doors panto
+
+build/a12.png: src/gfx/xcf/vehs/a12.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc panto
+build/a12_open.png: src/gfx/xcf/vehs/a12.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc doors panto
+
+build/hmiv.png: src/gfx/xcf/vehs/hmiv.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc panto
+build/hmiv_open.png: src/gfx/xcf/vehs/hmiv.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc doors panto
+
 build/mlnrviii_front.png: src/gfx/xcf/vehs/mlnrviii.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 panto
 build/mlnrviii_front_open.png: src/gfx/xcf/vehs/mlnrviii.xcf
@@ -26,3 +47,18 @@ build/mlnrviii_rear.png: src/gfx/xcf/vehs/mlnrviii.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 3
 build/mlnrviii_rear_open.png: src/gfx/xcf/vehs/mlnrviii.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 3 doors_3
+
+build/mlrvi_1.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 panto
+build/mlrvi_1_open.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 doors_1 panto
+build/mlrvi_2_4.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2_4
+build/mlrvi_2_4_open.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2_4 doors_2_4
+build/mlrvi_3.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 3
+build/mlrvi_5.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 5
+build/mlrvi_5_open.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 5 doors_5
