@@ -2,8 +2,23 @@
 
 SPR_PUR(ID(spr_pur), "build/mlnrviii_front.png")
 SPR(ID(spr_front), "build/mlnrviii_front.png", 5)
+SPR(ID(spr_front_open), "build/mlnrviii_front_open.png", 5)
 SPR(ID(spr_middle), "build/mlnrviii_middle.png", 5)
+SPR(ID(spr_middle_open), "build/mlnrviii_middle_open.png", 5)
 SPR(ID(spr_rear), "build/mlnrviii_rear.png", 5)
+SPR(ID(spr_rear_open), "build/mlnrviii_rear_open.png", 5)
+spritegroup ID(sprg_front) {
+    loading: ID(spr_front_open);
+    loaded: ID(spr_front);
+}
+spritegroup ID(sprg_middle) {
+    loading: ID(spr_middle_open);
+    loaded: ID(spr_middle);
+}
+spritegroup ID(sprg_rear) {
+    loading: ID(spr_rear_open);
+    loaded: ID(spr_rear);
+}
 
 SWITCH(ID(sw_arti), extra_callback_info1,
     1..2: VEH;
@@ -15,9 +30,9 @@ SWITCH(ID(sw_cst), cargo_subtype,
     CB_RESULT_NO_TEXT;
 )
 SWITCH(ID(sw_gfx), position_in_consist,
-    0: ID(spr_front);
-    1: ID(spr_middle);
-    2: ID(spr_rear);
+    0: ID(sprg_front);
+    1: ID(sprg_middle);
+    2: ID(sprg_rear);
 )
 
 PROPS_COMMON(VEH)
