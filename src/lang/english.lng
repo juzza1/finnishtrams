@@ -1,10 +1,8 @@
 ##grflangid 0x01
 STR_GRF_DESCRIPTION :Finnish Trams
 
-STR_PARAM_DEFAULT_LIVERY_NAME          :Default livery
-STR_PARAM_DEFAULT_LIVERY_DESC          :Choose the default livery for newly purchased vehicles. You can always refit to realistic or 2cc livery.
-STR_PARAM_DEFAULT_LIVERY_OPT_2CC       :2cc
+STR_PARAM_DEFAULT_LIVERY_NAME          :Default livery for new trams
+STR_PARAM_DEFAULT_LIVERY_DESC          :Choose the default livery for newly purchased trams. You can always refit to 2cc or realistic livery.
 STR_PARAM_DEFAULT_LIVERY_OPT_REALISTIC :Realistic
 
-STR_SUBTYPE_LIVERY_2CC       :2cc livery
-STR_SUBTYPE_LIVERY_REALISTIC :Realistic livery
+STR_LIVERY_YELLOW_GREEN :Yellow top, green bottom

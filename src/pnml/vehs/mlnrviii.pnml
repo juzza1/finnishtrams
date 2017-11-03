@@ -24,10 +24,11 @@ SWITCH(ID(sw_arti), extra_callback_info1,
     1..2: VEH;
     CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 )
-SWITCH(ID(sw_cst), cargo_subtype,
-    0: string(STR_SUBTYPE_LIVERY_2CC);
-    1: string(STR_SUBTYPE_LIVERY_REALISTIC);
-    CB_RESULT_NO_TEXT;
+SWITCH_SUBTYPE(ID(sw_cst),
+    string(STR_SUBTYPE_REAL, string(STR_HKL), string(STR_LIVERY_YELLOW_GREEN))
+)
+SWITCH_RECOLOUR(ID(sw_cm),
+    recolour_hkl
 )
 SWITCH(ID(sw_gfx), position_in_consist,
     0: ID(sprg_front);
@@ -51,7 +52,7 @@ PROPS(VEH,
 GFX(VEH,
     articulated_part: ID(sw_arti);
     cargo_subtype_text: ID(sw_cst);
-    colour_mapping: sw_recolour_hkl;
+    colour_mapping: ID(sw_cm);
     default: ID(sw_gfx);
     purchase: ID(spr_pur);
 )

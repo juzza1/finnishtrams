@@ -29,9 +29,3 @@ replace(recolour_valmet) {
         CC2_TO_CREAM
     }
 }
-
-switch (FEAT_ROADVEHS, SELF, sw_recolour_hkl, cargo_subtype) {
-    0: CB_FAILED;
-    1: recolour_hkl;
-    PALETTE_IDENTITY;
-}
