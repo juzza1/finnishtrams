@@ -21,7 +21,9 @@ BUILD_DIR ?= build
 SRC_DIR ?= src
 
 # Docs
-DOC_FILES ?= docs/changelog.txt docs/license.txt docs/readme.txt
+DOC_DIR ?= docs
+DOC_FILENAMES ?= changelog.txt license.txt readme.txt
+DOC_FILES := $(addprefix $(DOC_DIR)/, $(DOC_FILENAMES))
 
 # Lang-related
 DEFAULT_LANG ?= english.lng
@@ -164,6 +166,6 @@ $(LANG_BUILD_DIR)/%.lng: $(LANG_SRC_DIR)/%.lng
 
 ## packaging
 $(TAR_FILE): $(GRF_FILE) $(DOC_FILES)
-	tar -cf $(TAR_FILE) $^
+	tar -cf $@ --transform 's,^,$(BASE_FILENAME)/,' $(GRF_FILE) -C $(DOC_DIR) $(DOC_FILENAMES)
 $(ZIP_FILE): $(TAR_FILE)
 	zip -9 $(ZIP_FILE) $(TAR_FILE)
