@@ -100,7 +100,6 @@ item (FEAT_ROADVEHS, block_id) { \
         non_refittable_cargo_classes: NO_CARGO_CLASS; \
         refit_cost: 0; \
         refittable_cargo_classes: bitmask(CC_PASSENGERS); \
-        running_cost_base: RUNNING_COST_NONE; \
         sprite_id: SPRITE_ID_NEW_ROADVEH; \
     } \
 }

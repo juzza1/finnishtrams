@@ -6,27 +6,25 @@ STR_PARAM_DEFAULT_LIVERY_OPT_2CC :2cc
 STR_MORE_TEXT :{SILVER}----------{}{BLACK}{STRING}: {GOLD}{STRING}{}{BLACK}{STRING}: {GOLD}{STRING}{}{BLACK}{STRING}
 
 STR_HKL  :HKL
+STR_HRO  :HRO
 STR_TUKL :TUKL
 
-STR_SUBTYPE_2CC  : (2cc)
-STR_SUBTYPE_REAL : ({STRING}) ({STRING})
+STR_SUBTYPE_2CC  : - 2cc
+STR_SUBTYPE_REAL : - {STRING} ({STRING})
 
 STR_D_A3          :HRO 36-112 / HKL 1-67
-STR_NAME_A3       :A3 "Pikkuruotsalainen"
-
 STR_D_A4          :HRO 151-170 / HKL 71-90
-STR_NAME_A4       :A4 "Jenkki"
-
 STR_D_A12         :HRO 431-436 / HKL 181-186
-STR_NAME_A12      :A12 "Arkku"
-
 STR_D_HMIV        :HKL 301-330
-STR_NAME_HMIV     :HM IV "Ratti-Karia"
-
+STR_D_HORSE       :HRO 1-15
 STR_D_MLRVI       :HKL 201-240
-STR_NAME_MLRVI    :MLRV I "Vario"
-
 STR_D_MLNRVIII    :HKL 401-460
+
+STR_NAME_A3       :A3 "Pikkuruotsalainen"
+STR_NAME_A4       :A4 "Jenkki"
+STR_NAME_A12      :A12 "Arkku"
+STR_NAME_HMIV     :HM IV "Ratti-Karia"
+STR_NAME_MLRVI    :MLRV I "Vario"
 STR_NAME_MLNRVIII :MLNRV III "Artic"
 
 STR_NAME_TEST4   :4lu test tram

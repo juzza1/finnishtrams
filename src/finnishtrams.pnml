@@ -4,6 +4,7 @@
 #include "pnml/recolour.pnml"
 
 //#include "pnml/vehs/test.pnml"
+#include "pnml/vehs/horse.pnml"
 #include "pnml/vehs/a3.pnml"
 #include "pnml/vehs/a4.pnml"
 #include "pnml/vehs/a12.pnml"

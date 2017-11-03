@@ -35,6 +35,17 @@ build/hmiv.png: src/gfx/xcf/vehs/hmiv.xcf
 build/hmiv_open.png: src/gfx/xcf/vehs/hmiv.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc doors panto
 
+build/horse_car.png: src/gfx/xcf/vehs/horse.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg car
+build/horse_idle.png: src/gfx/xcf/vehs/horse.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg horse_idle
+build/horse_anim1.png: src/gfx/xcf/vehs/horse.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg horse_anim_1
+build/horse_anim2.png: src/gfx/xcf/vehs/horse.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg horse_anim_2
+build/horse_anim3.png: src/gfx/xcf/vehs/horse.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg horse_anim_3
+
 build/mlnrviii_front.png: src/gfx/xcf/vehs/mlnrviii.xcf
 	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 panto
 build/mlnrviii_front_open.png: src/gfx/xcf/vehs/mlnrviii.xcf
