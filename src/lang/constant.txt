@@ -1,4 +1,5 @@
 STR_GRF_NAME :Finnish Trams {REPO_VERSION}
+STR_GRF_URL  :http://dev.openttdcoop.org/projects/finnishtrams
 
 STR_PARAM_DEFAULT_LIVERY_OPT_2CC :2cc
 

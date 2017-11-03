@@ -1,5 +1,5 @@
 ##grflangid 0x01
-STR_GRF_DESCRIPTION :Finnish Trams
+STR_GRF_DESCRIPTION :Trams used in Finland from the late 19th century horse-driven trams to modern day articulated trams.
 
 STR_PARAM_DEFAULT_LIVERY_NAME          :Default livery for new trams
 STR_PARAM_DEFAULT_LIVERY_DESC          :Choose the default livery for newly purchased trams. You can always refit to 2cc or realistic livery.

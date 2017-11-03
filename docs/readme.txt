@@ -22,6 +22,9 @@ horse-driven trams to modern day articulated trams.
 2 Usage and Parameters
 ----------------------
 
+Right-hand traffic is recommended with this NewGRF, as most trams have
+doors opening to the right side.
+
 All NewGRF a parameters are fully described in the parameter selection
 menu.
 
@@ -83,5 +86,7 @@ clean:
 5 Credits
 ---------
 
-Reference images and data: www.raitio.org
 Coding, graphics: juzza1
+
+Special thanks to #openttdcoop Development Zone maintainers for
+repository hosting, and the original make-nml framework.
