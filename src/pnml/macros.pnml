@@ -116,3 +116,7 @@ item (FEAT_ROADVEHS, block_id) { \
         __VA_ARGS__ \
     } \
 }
+
+#define MORE_TEXT(livery_count, str_designation, str_trivia) \
+string(STR_MORE_TEXT, string(STR_MORE_TEXT_LIVERIES), livery_count, \
+       string(STR_MORE_TEXT_DESIGNATION), str_designation, str_trivia)

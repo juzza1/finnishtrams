@@ -50,6 +50,8 @@ PROPS(VEH,
     weight: 10ton;
 )
 GFX(VEH,
+    additional_text: MORE_TEXT("2", string(STR_D_MLNRVIII),
+                               string(STR_TRIVIA_MLNRVIII));
     articulated_part: ID(sw_arti);
     cargo_subtype_text: ID(sw_cst);
     colour_mapping: ID(sw_cm);
