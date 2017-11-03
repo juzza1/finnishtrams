@@ -15,9 +15,9 @@ STR_LIVERY_YELLOW_PALE_GREEN :Yellow top, pale green bottom
 STR_NAME_HORSE      :Horse-drawn tram
 
 STR_TRIVIA_A3       :Common in Sweden and Denmark as well.
-STR_TRIVIA_A4       :First fully enclosed tram in the Helsinki tram network.
-STR_TRIVIA_A12      :Purchased for the 1940 Summer Olympics in Helsinki, which where ultimately cancelled due to World War II.
+STR_TRIVIA_A4       :First fully enclosed tram in use in the Helsinki tram network.
+STR_TRIVIA_A12      :Purchased for the 1940 Summer Olympics in Helsinki, which were ultimately cancelled due to World War II.
 STR_TRIVIA_HMIV     :A typical design of its era, this tram was sometimes used with a trailer.
-STR_TRIVIA_HORSE    :It's an actual horse
-STR_TRIVIA_MLRVI    :The infamous "Vauriotram" (literal translation: Damage Tram) was ultimately ill-suited for the Helsinki tram network, and was pulled early from service.
-STR_TRIVIA_MLNRVIII :The free-turning bogies of this modern tram were designed especially for the steep curves and inclines of the Helsinki tram network.
+STR_TRIVIA_HORSE    :The origin of tram transportation in Finland, these valiant creatures were soon retired in place of electric trams.
+STR_TRIVIA_MLRVI    :The infamous "Vauriotram" (literal translation: "Damage Tram") was ultimately ill-suited for the Helsinki tram network, and was pulled early from service.
+STR_TRIVIA_MLNRVIII :The free-turning bogies of this modern tram were designed specially for the steep curves and inclines of the Helsinki tram network.
