@@ -17,6 +17,9 @@ Contents:
 Finnish Trams includes trams used in Finland from the late 19th century
 horse-driven trams to modern day articulated trams.
 
+The trams are based on their real-life counterparts, with speed and
+capacity adjusted for gameplay.
+
 
 ----------------------
 2 Usage and Parameters
