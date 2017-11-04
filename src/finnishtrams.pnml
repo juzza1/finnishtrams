@@ -3,11 +3,4 @@
 #include "pnml/sprite_templates.pnml"
 #include "pnml/recolour.pnml"
 
-//#include "pnml/vehs/test.pnml"
-#include "pnml/vehs/horse.pnml"
-#include "pnml/vehs/a3.pnml"
-#include "pnml/vehs/a4.pnml"
-#include "pnml/vehs/a12.pnml"
-#include "pnml/vehs/hmiv.pnml"
-#include "pnml/vehs/mlrvi.pnml"
-#include "pnml/vehs/mlnrviii.pnml"
+#include "build/include_vehs.pnml"

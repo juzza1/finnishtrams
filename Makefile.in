@@ -2,8 +2,15 @@ GFX_DEP := $(SRC_DIR)/gfx.mk
 include $(GFX_DEP)
 $(GFX_ALL): $(GFX_DEP)
 
+CC_FLAGS += -I .
 PREVIEW := $(BUILD_DIR)/props.html
 
 all: $(PREVIEW)
 $(PREVIEW): $(NML_FILE)
-	tools/props-to-html $^ $@
+	tools/props-to-html $< $@
+
+build/include_vehs.pnml: src/pnml/vehs/*.pnml
+	> $@
+	for f in $^ ; do \
+            echo "#include \"$$f\"" >> $@ ; \
+        done

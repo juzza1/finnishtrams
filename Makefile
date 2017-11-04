@@ -1,8 +1,9 @@
+MAKEFLAGS += --no-builtin-rules
 SHELL := /bin/bash
 
 # Can be used as a shorthand to add dependencies to all gfx files
 # at once
-GFX_ALL_REPL := GFX_ALL
+GFX_ALL_REPL := gfx_all
 
 .SUFFIXES:
 .PHONY: all bundle_src bundle_tar bundle_zip clean install uninstall \
@@ -100,13 +101,6 @@ ZIP_FILE := $(TAR_STEM)-$(FILE_VERSION_STRING).zip
 ### Targets called from command line
 all: $(GRF_FILE)
 
-ifneq ($(MAKECMDGOALS), clean)
-$(shell mkdir -p $(BUILD_DIRS))
-include $(GRF_DEP)
-include $(NML_DEP)
-endif
--include Makefile.in
-
 bundle_src:
 ifeq ($(USED_VCS), hg)
 	HGPLAIN= hg archive -X .devzone -t tar $(TAR_SRC_FILE)
@@ -136,11 +130,24 @@ install uninstall:
 endif
 
 
+ifneq ($(MAKECMDGOALS), clean)
+$(shell mkdir -p $(BUILD_DIRS))
+include $(NML_DEP)
+endif
+-include Makefile.in
+
+
 ### Other targets called by other rules and includes
 
 ## grf
+# Two passes are needed - once to rebuild any pnml files, and another to
+# build the nml file, and in turn, the grf dependencies
+# include the grf dependency file in the nml file to induce a second pass
 $(NML_DEP): $(PNML_FILE)
 	$(CC) $(CC_FLAGS) -M $(PNML_FILE) -MF $@ -MG -MT $(NML_FILE)
+	echo 'ifneq ($$(MAKECMDGOALS), clean)' >> $@
+	echo 'include $$(GRF_DEP)' >> $@
+	echo "endif" >> $@
 $(NML_FILE): $(PNML_FILE)
 	$(CC) -D GRF_VERSION=$(GRF_VERSION) $(CC_FLAGS) -o $@ $(PNML_FILE)
 $(GRF_DEP): $(NML_FILE) $(CUSTOM_TAGS) $(DEFAULT_LANG_BUILD)
