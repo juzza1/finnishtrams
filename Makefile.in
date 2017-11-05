@@ -17,7 +17,4 @@ $(GFX_DEP): $(VEHS)
 	tools/substring -s '[[MAKE' -e ']]' -o $@ $^
 
 build/include_vehs.pnml: $(VEHS)
-	> $@
-	for f in $^ ; do \
-            echo "#include \"$$f\"" >> $@ ; \
-        done
+	cat $^ > $@
