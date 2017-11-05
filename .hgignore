@@ -3,18 +3,14 @@ syntax: glob
 # Intermediate and temp files
 *~
 *.blend1
-*.nml
-*.old
-*.png
 *.pyc
-*.scm
 *.swp
-*.tar
+__pycache__
 
-build/*
-custom_tags.txt
-docs/readme.txt
-finnishtrams/
-finnishtrams.grf*
-Makefile_gfx.dep
-parsetab.py
+finnishtrams*.{grf,tar,zip}
+
+
+syntax: regexp
+
+^build
+^\.nmlcache
