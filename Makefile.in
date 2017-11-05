@@ -14,7 +14,7 @@ VEHS := $(wildcard src/pnml/vehs/*.pnml)
 GFX_DEP := $(BUILD_DIR)/gfx.dep
 $(call INCLUDE_NOCLEAN, $(GFX_DEP))
 $(GFX_DEP): $(VEHS)
-	tools/make-expander $^ > $@
+	tools/substring -s '[[MAKE' -e ']]' -o $@ $^
 
 build/include_vehs.pnml: $(VEHS)
 	> $@
