@@ -6,8 +6,8 @@ SHELL := /bin/bash
 GFX_ALL_REPL := gfx_all
 
 .SUFFIXES:
-.PHONY: all bundle_src bundle_tar bundle_zip clean install uninstall \
-        $(GFX_ALL_REPL)
+.PHONY: all bundle_src bundle_tar bundle_zip clean install maintainer-clean \
+        uninstall $(GFX_ALL_REPL)
 
 include Makefile.config
 
@@ -62,6 +62,19 @@ REPLACE_GRF_TITLE := GRF_TITLE
 REPLACE_REPO_VERSION := REPO_VERSION
 
 
+# Set the variable CLEAN if targets are clean-only
+# Also define INCLUDE_NOCLEAN function to conditionally include only if
+# CLEAN is unset
+ifdef MAKECMDGOALS
+ifeq ($(filter-out %clean,$(MAKECMDGOALS)),)
+CLEAN = true
+endif
+endif
+ifndef CLEAN
+INCLUDE_NOCLEAN = $(eval include $$(1))
+endif
+
+
 ### Program definitions
 CC ?= cc
 CC_FLAGS ?= -C -E -nostdinc -x c-header
@@ -101,6 +114,12 @@ ZIP_FILE := $(TAR_STEM)-$(FILE_VERSION_STRING).zip
 ### Targets called from command line
 all: $(GRF_FILE)
 
+ifndef CLEAN
+$(shell mkdir -p $(BUILD_DIRS))
+endif
+$(call INCLUDE_NOCLEAN, $(NML_DEP))
+-include Makefile.in
+
 bundle_src:
 ifeq ($(USED_VCS), hg)
 	HGPLAIN= hg archive -X .devzone -t tar $(TAR_SRC_FILE)
@@ -114,6 +133,8 @@ bundle_tar: $(TAR_FILE)
 bundle_zip: $(ZIP_FILE)
 clean::
 	rm -rf $(BUILD_DIR) $(BASE_FILENAME)*.{grf,tar,zip}
+maintainer-clean:: clean
+	rm -rf .nmlcache
 
 ifeq ($(shell uname -s), Linux)
 ifndef DESTDIR
@@ -130,13 +151,6 @@ install uninstall:
 endif
 
 
-ifneq ($(MAKECMDGOALS), clean)
-$(shell mkdir -p $(BUILD_DIRS))
-include $(NML_DEP)
-endif
--include Makefile.in
-
-
 ### Other targets called by other rules and includes
 
 ## grf
@@ -145,9 +159,7 @@ endif
 # include the grf dependency file in the nml file to induce a second pass
 $(NML_DEP): $(PNML_FILE)
 	$(CC) $(CC_FLAGS) -M $(PNML_FILE) -MF $@ -MG -MT $(NML_FILE)
-	echo 'ifneq ($$(MAKECMDGOALS), clean)' >> $@
-	echo 'include $$(GRF_DEP)' >> $@
-	echo "endif" >> $@
+	echo '$$(call INCLUDE_NOCLEAN, $$(GRF_DEP))' >> $@
 $(NML_FILE): $(PNML_FILE)
 	$(CC) -D GRF_VERSION=$(GRF_VERSION) $(CC_FLAGS) -o $@ $(PNML_FILE)
 $(GRF_DEP): $(NML_FILE) $(CUSTOM_TAGS) $(DEFAULT_LANG_BUILD)

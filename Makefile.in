@@ -12,9 +12,7 @@ $(PREVIEW): $(NML_FILE)
 VEHS := $(wildcard src/pnml/vehs/*.pnml)
 
 GFX_DEP := $(BUILD_DIR)/gfx.dep
-ifneq ($(MAKECMDGOALS), clean)
-include $(GFX_DEP)
-endif
+$(call INCLUDE_NOCLEAN, $(GFX_DEP))
 $(GFX_DEP): $(VEHS)
 	tools/make-expander $^ > $@
 
