@@ -48,8 +48,8 @@ or via mercurial checkout
 
 Prerequisites:
     gcc
-    make
-    nmlc
+    GNU make
+    NewGRF Meta Language compiler (nmlc)
     python3
     xcftools
 
@@ -73,16 +73,19 @@ bundle_zip
 bundle_src
     Creates a source bundle.
 
+clean:
+    Deletes files this Makefile creates.
+
 install:
     This will copy the tar archive into DESTDIR
     (default: $HOME/.openttd/newgrf).
 
+maintainer-clean:
+    As clean, but deletes all nml cache as well.
+
 uninstall:
     This will remove any tar archives matching the name of this project
     from DESTDIR.
-
-clean:
-    Deletes files this Makefile creates.
 
 
 ---------
