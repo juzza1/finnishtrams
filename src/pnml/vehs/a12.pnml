@@ -1,4 +1,10 @@
 #define VEH a12
+/*[[MAKE
+build/a12.png: src/gfx/xcf/vehs/a12.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc panto
+build/a12_open.png: src/gfx/xcf/vehs/a12.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc doors panto
+]]*/
 
 SPR_PUR(ID(spr_pur), "build/a12.png")
 SPR(ID(spr_def), "build/a12.png", 6)

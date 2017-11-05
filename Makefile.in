@@ -1,15 +1,24 @@
-GFX_DEP := $(SRC_DIR)/gfx.mk
-include $(GFX_DEP)
-$(GFX_ALL): $(GFX_DEP)
-
 CC_FLAGS += -I .
+
 PREVIEW := $(BUILD_DIR)/props.html
+
+XCFP := xcf2png
+XCFP_FLAGS := --autocrop --background \\\#FFFFFF --dissolve --output
 
 all: $(PREVIEW)
 $(PREVIEW): $(NML_FILE)
 	tools/props-to-html $< $@
 
-build/include_vehs.pnml: src/pnml/vehs/*.pnml
+VEHS := $(wildcard src/pnml/vehs/*.pnml)
+
+GFX_DEP := $(BUILD_DIR)/gfx.dep
+ifneq ($(MAKECMDGOALS), clean)
+include $(GFX_DEP)
+endif
+$(GFX_DEP): $(VEHS)
+	tools/make-expander $^ > $@
+
+build/include_vehs.pnml: $(VEHS)
 	> $@
 	for f in $^ ; do \
             echo "#include \"$$f\"" >> $@ ; \

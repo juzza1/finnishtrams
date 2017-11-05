@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+"""
+    Print contents of [[MAKE ... ]] blocks in file(s) to stdout
+"""
+
+import re
+import sys
+
+
+def blocks(text):
+    pat = re.compile(r'\[\[MAKE(.*?)\]\]', re.DOTALL)
+    for block in pat.findall(text):
+        yield block.strip()
+
+
+if __name__ == "__main__":
+    for file_name in sys.argv[1:]:
+        with open(file_name) as f:
+            for block in blocks(f.read()):
+                print(block)

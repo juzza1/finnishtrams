@@ -1,4 +1,20 @@
 #define VEH mlrvi
+/*[[MAKE
+build/mlrvi_1.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 panto
+build/mlrvi_1_open.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 1 doors_1 panto
+build/mlrvi_2_4.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2_4
+build/mlrvi_2_4_open.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2_4 doors_2_4
+build/mlrvi_3.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 3
+build/mlrvi_5.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 5
+build/mlrvi_5_open.png: src/gfx/xcf/vehs/mlrvi.xcf
+	$(XCFP) $(XCFP_FLAGS) $@ $< bg 5 doors_5
+]]*/
 
 SPR_PUR(ID(spr_pur), "build/mlrvi_1.png")
 SPR(ID(spr_1), "build/mlrvi_1.png", 4)
