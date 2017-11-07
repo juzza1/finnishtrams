@@ -1,7 +1,6 @@
 #define VEH kummer
 /*[[MAKE
-build/kummer.png: src/gfx/xcf/vehs/kummer.xcf
-	$(XCFP) $(XCFP_FLAGS) $@ $< bg 2cc panto
+build/kummer.png src/gfx/xcf/vehs/kummer.xcf bg 2cc panto;
 ]]*/
 
 SPR_PUR(ID(spr_pur), "build/kummer.png")

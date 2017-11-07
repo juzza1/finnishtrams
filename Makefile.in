@@ -1,20 +1,22 @@
 CC_FLAGS += -I .
 
+XCF2PNG_FLAGS := --autocrop --background \\\#FFFFFF --dissolve --output
 PREVIEW := $(BUILD_DIR)/props.html
-
-XCFP := xcf2png
-XCFP_FLAGS := --autocrop --background \\\#FFFFFF --dissolve --output
+VEHS := $(wildcard src/pnml/vehs/*.pnml)
+define GENERATE_PNG_DEP=
+    tools/substring -s '[[MAKE' -e ']]' $(VEHS) | \
+    tools/xcf-dep -f '$(XCF2PNG_FLAGS)' build
+endef
 
 all: $(PREVIEW)
+
 $(PREVIEW): $(NML_FILE)
 	tools/props-to-html $< $@
 
-VEHS := $(wildcard src/pnml/vehs/*.pnml)
-
-GFX_DEP := $(BUILD_DIR)/gfx.dep
-$(call INCLUDE_NOCLEAN, $(GFX_DEP))
-$(GFX_DEP): $(VEHS)
-	tools/substring -s '[[MAKE' -e ']]' -o $@ $^
+ifndef CLEAN
+$(shell $(GENERATE_PNG_DEP))
+include $(wildcard build/*.png.dep)
+endif
 
 build/include_vehs.pnml: $(VEHS)
 	cat $^ > $@
