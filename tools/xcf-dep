@@ -14,7 +14,7 @@ def get_strings(text):
 
 
 def make_rule(targets, prerequisites, recipe):
-    temp = '{} : {} ; {}'
+    temp = '{}: {}\n\t{}'
     return temp.format(' '.join(targets), ' '.join(prerequisites), recipe)
 
 
