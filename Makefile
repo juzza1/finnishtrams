@@ -71,7 +71,7 @@ CLEAN = true
 endif
 endif
 ifndef CLEAN
-INCLUDE_NOCLEAN = $(eval include $$(1))
+INCLUDE_NOCLEAN = $(foreach a, $1, $(eval include $$(a)))
 endif
 
 
