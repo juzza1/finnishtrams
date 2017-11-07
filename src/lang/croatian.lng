@@ -11,9 +11,9 @@ STR_PARAM_DEFAULT_LIVERY_OPT_REALISTIC :Stvarna livreja
 STR_MORE_TEXT_LIVERIES    :Livreje
 STR_MORE_TEXT_DESIGNATION :Oznaka
 
-STR_LIVERY_HORSE             :Zelena, plave uniforme za vozače
-STR_LIVERY_YELLOW_GREEN      :Žuta gore, zelena dolje
-STR_LIVERY_YELLOW_PALE_GREEN :Žuta gore, svijetlo zelena dolje
+STR_LIVERY_HORSE                :Zelena, plave uniforme za vozače
+STR_LIVERY_YELLOW_GREEN         :Žuta gore, zelena dolje
+STR_LIVERY_YELLOW_PALE_GREEN    :Žuta gore, svijetlo zelena dolje
 
 STR_NAME_HORSE      :Konjski tramvaj
 
