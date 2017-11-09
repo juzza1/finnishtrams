@@ -12,7 +12,7 @@ all: $(PREVIEW)
 $(PREVIEW): $(NML_FILE)
 	tools/props-to-html $< $@
 
-build/include_vehs.pnml: $(VEHS)
+build/vehs.pnml: $(VEHS)
 	cat $^ > $@
 
 $(PNG_DEP_INCLUDE): $(VEHS)

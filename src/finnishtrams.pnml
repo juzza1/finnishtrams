@@ -3,4 +3,4 @@
 #include "pnml/sprite_templates.pnml"
 #include "pnml/recolour.pnml"
 
-#include "build/include_vehs.pnml"
+#include "build/vehs.pnml"
