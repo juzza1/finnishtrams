@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+"""
+find image definitions in input files according to FORMAT,
+and emit a singular make rule for each image definition
+
+FORMAT = <png-file> <xcf-file> <layer> [<layer>...] ;
+"""
 
 import argparse
 import os.path
@@ -19,7 +25,9 @@ def make_rule(targets, prerequisites, recipe):
 
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('-f', '--flags')
     parser.add_argument('-i', '--input-file', metavar='<file>', nargs='*')
     parser.add_argument('outdir')
