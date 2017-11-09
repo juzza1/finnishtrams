@@ -1,6 +1,6 @@
 CC_FLAGS += -I .
 
-XCF2PNG_FLAGS := --autocrop --background \\\#FFFFFF --dissolve --output
+XCF2PNG_FLAGS := --autocrop --output
 PREVIEW := $(BUILD_DIR)/props.html
 VEHS := $(wildcard src/pnml/vehs/*.pnml)
 PNG_DEP_INCLUDE := build/png.dep.include
