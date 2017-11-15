@@ -1,9 +1,9 @@
 #define VEH hmiv
 /*[[MAKE
 build/hmiv.png src/gfx/xcf/vehs/hm_iv_v.xcf
-    bg 2cc door_ind windows roofstuff lights panto;
+    bg 2cc iv_features door_ind windows roofstuff lights panto;
 build/hmiv_open.png src/gfx/xcf/vehs/hm_iv_v.xcf
-    bg 2cc door_ind windows doors roofstuff lights panto;
+    bg 2cc iv_features door_ind windows doors roofstuff lights panto;
 ]]*/
 
 SPR_PUR(ID(spr_pur), "build/hmiv.png")
