@@ -13,7 +13,7 @@ $(PREVIEW): $(NML_FILE)
 	tools/props-to-html $< $@
 
 build/vehs.pnml: $(VEHS)
-	cat $^ > $@
+	cat $(sort $^) > $@
 
 $(PNG_DEP_INCLUDE): $(VEHS)
 	tools/substring -s '[[MAKE' -e ']]' $^ | \
