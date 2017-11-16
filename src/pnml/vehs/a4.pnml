@@ -1,7 +1,7 @@
 #define VEH a4
 /*[[MAKE
-build/a4.png src/gfx/xcf/vehs/a4.xcf bg 2cc panto;
-build/a4_open.png src/gfx/xcf/vehs/a4.xcf bg 2cc doors panto;
+build/a4.png src/gfx/xcf/vehs/a4.xcf bg 2cc windows lights panto;
+build/a4_open.png src/gfx/xcf/vehs/a4.xcf bg 2cc windows lights doors panto;
 ]]*/
 
 SPR_PUR(ID(spr_pur), "build/a4.png")
