@@ -20,7 +20,9 @@ STR_D_HMV         :HKL 1-15
 STR_D_HORSE       :HRO 1-15
 STR_D_KUMMER      :HRO 1-35
 STR_D_MLRVI       :HKL 201-240
+STR_D_MLNRVII     :HKL 71-112
 STR_D_MLNRVIII    :HKL 401-460
+STR_D_NRVII       :HKL 71-112
 
 STR_NAME_A3       :A3 "Pikkuruotsalainen"
 STR_NAME_A4       :A4 "Jenkki"
@@ -29,7 +31,9 @@ STR_NAME_KUMMER   :Kummer
 STR_NAME_HMIV     :HM IV "Ratti-Karia"
 STR_NAME_HMV      :HM V "Keppi-Karia"
 STR_NAME_MLRVI    :MLRV I "Vario"
+STR_NAME_MLNRVII  :MLNRV II "Välipala"
 STR_NAME_MLNRVIII :MLNRV III "Artic"
+STR_NAME_NRVII    :NRV II "Sarana"
 
 STR_NAME_TEST4   :4lu test tram
 STR_NAME_TEST46W :4lu test tram (thin)

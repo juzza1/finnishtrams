@@ -23,4 +23,6 @@ STR_TRIVIA_HMV      :Can be distinguished from its little brother by the tilted 
 STR_TRIVIA_HORSE    :The origin of tram transportation in Finland, these valiant creatures were soon retired in place of electric trams.
 STR_TRIVIA_KUMMER   :First electric tram in Finland. It had no doors, and featured a simple trolley pole for electrification.
 STR_TRIVIA_MLRVI    :The infamous "Vauriotram" (literal translation: "Damage Tram") was ultimately ill-suited for the Helsinki tram network, and was pulled early from service.
+STR_TRIVIA_MLNRVII  :This old but succesful design was modernized from NRV II by adding a low-floor middle section.
 STR_TRIVIA_MLNRVIII :The free-turning bogies of this modern tram were designed specially for the steep curves and inclines of the Helsinki tram network.
+STR_TRIVIA_NRVII    :Versions of this classic boxy design by Valmet are still seen on the streets of Helsinki.
