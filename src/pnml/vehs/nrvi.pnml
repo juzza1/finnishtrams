@@ -1,16 +1,16 @@
-#define VEH nrvii
+#define VEH nrvi
 /*[[MAKE
-build/nrvii_1.png src/gfx/xcf/vehs/nrvi.xcf bg 1 1_nrv2 panto;
-build/nrvii_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 1_nrv2 doors_1 panto;
-build/nrvii_2.png src/gfx/xcf/vehs/nrvi.xcf bg 3;
-build/nrvii_2_open.png src/gfx/xcf/vehs/nrvi.xcf bg 3 doors_3;
+build/nrvi_1.png src/gfx/xcf/vehs/nrvi.xcf bg 1 panto;
+build/nrvi_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 doors_1 panto;
+build/nrvi_2.png src/gfx/xcf/vehs/nrvi.xcf bg 3 3_nrv1;
+build/nrvi_2_open.png src/gfx/xcf/vehs/nrvi.xcf bg 3 3_nrv1 doors_3;
 ]]*/
 
-SPR_PUR(ID(spr_pur), "build/nrvii_1.png")
-SPR(ID(spr_1), "build/nrvii_1.png", 5)
-SPR(ID(spr_1_open), "build/nrvii_1_open.png", 5)
-SPR(ID(spr_2), "build/nrvii_2.png", 5)
-SPR(ID(spr_2_open), "build/nrvii_2_open.png", 5)
+SPR_PUR(ID(spr_pur), "build/nrvi_2.png")
+SPR(ID(spr_1), "build/nrvi_1.png", 5)
+SPR(ID(spr_1_open), "build/nrvi_1_open.png", 5)
+SPR(ID(spr_2), "build/nrvi_2.png", 5)
+SPR(ID(spr_2_open), "build/nrvi_2_open.png", 5)
 spritegroup ID(sprg_1) {
     loading: ID(spr_1_open);
     loaded: ID(spr_1);
@@ -38,19 +38,19 @@ SWITCH(ID(sw_gfx), position_in_consist,
 
 PROPS_COMMON(VEH)
 PROPS(VEH,
-    cargo_capacity: 31;
+    cargo_capacity: 28;
     cost_factor: 0;
-    introduction_date: date(1983,01,01);
+    introduction_date: date(1973,01,01);
     length: 5;
-    name: string(STR_NAME_NRVII);
+    name: string(STR_NAME_NRVI);
     power: 2*130 kW;
     running_cost_factor: 0;
-    speed: 72 km/h;
-    weight: 27 ton;
+    speed: 68 km/h;
+    weight: 28 ton;
 )
 GFX(VEH,
-    additional_text: MORE_TEXT("2", string(STR_D_NRVII),
-                               string(STR_TRIVIA_NRVII));
+    additional_text: MORE_TEXT("2", string(STR_D_NRVI),
+                               string(STR_TRIVIA_NRVI));
     articulated_part: ID(sw_arti);
     cargo_subtype_text: ID(sw_cst);
     colour_mapping: ID(sw_cm);

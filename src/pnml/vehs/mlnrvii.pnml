@@ -1,14 +1,14 @@
 #define VEH mlnrvii
 /*[[MAKE
-build/mlnrvii_1.png src/gfx/xcf/vehs/nrvi.xcf bg 1 panto;
-build/mlnrvii_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 doors_1 panto;
+build/mlnrvii_1.png src/gfx/xcf/vehs/nrvi.xcf bg 1 1_nrv2 panto;
+build/mlnrvii_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 1_nrv2 doors_1 panto;
 build/mlnrvii_2.png src/gfx/xcf/vehs/nrvi.xcf bg 2;
 build/mlnrvii_2_open.png src/gfx/xcf/vehs/nrvi.xcf bg 2 doors_2;
 build/mlnrvii_3.png src/gfx/xcf/vehs/nrvi.xcf bg 3;
 build/mlnrvii_3_open.png src/gfx/xcf/vehs/nrvi.xcf bg 3 doors_3;
 ]]*/
 
-SPR_PUR(ID(spr_pur), "build/mlnrvii_1.png")
+SPR_PUR(ID(spr_pur), "build/mlnrvii_2.png")
 SPR(ID(spr_1), "build/mlnrvii_1.png", 5)
 SPR(ID(spr_1_open), "build/mlnrvii_1_open.png", 5)
 SPR(ID(spr_2), "build/mlnrvii_2.png", 3)
@@ -33,11 +33,11 @@ SWITCH(ID(sw_arti), extra_callback_info1,
     CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 )
 SWITCH_SUBTYPE(ID(sw_cst),
-    string(STR_SUBTYPE_REAL, string(STR_HKL), string(STR_LIVERY_YELLOW_GREEN)
+    string(STR_SUBTYPE_REAL, string(STR_HKL), string(STR_LIVERY_CREAM_GREEN)
     )
 )
 SWITCH_RECOLOUR(ID(sw_cm),
-    recolour_hkl
+    recolour_valmet
 )
 SWITCH(ID(sw_gfx), position_in_consist,
     0: ID(sprg_1);
