@@ -10,8 +10,8 @@ STR_PARAM_DEFAULT_LIVERY_OPT_REALISTIC :현실적
 STR_MORE_TEXT_LIVERIES    :도색
 STR_MORE_TEXT_DESIGNATION :지정자
 
-STR_LIVERY_HORSE                :초록색, 운전사들의 파란 제복
 STR_LIVERY_GREEN_YELLOW_ACCENTS :초록색 바탕에 노란색 강조선
+STR_LIVERY_HORSE                :초록색, 운전사들의 파란 제복
 STR_LIVERY_YELLOW_GREEN         :노란색 상부, 초록색 하부
 STR_LIVERY_YELLOW_PALE_GREEN    :노란색 상부, 엷은 초록색 하부
 
