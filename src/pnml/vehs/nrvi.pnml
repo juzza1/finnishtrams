@@ -1,12 +1,12 @@
 #define VEH nrvi
 /*[[MAKE
-build/nrvi_1.png src/gfx/xcf/vehs/nrvi.xcf bg 1 panto;
+build/nrvi_1.png src/gfx/xcf/vehs/nrvi.xcf bg pur_nrv1 1 panto;
 build/nrvi_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 doors_1 panto;
 build/nrvi_2.png src/gfx/xcf/vehs/nrvi.xcf bg 3 3_nrv1;
 build/nrvi_2_open.png src/gfx/xcf/vehs/nrvi.xcf bg 3 3_nrv1 doors_3;
 ]]*/
 
-SPR_PUR(ID(spr_pur), "build/nrvi_2.png")
+SPR_PUR(ID(spr_pur), "build/nrvi_1.png")
 SPR(ID(spr_1), "build/nrvi_1.png", 5)
 SPR(ID(spr_1_open), "build/nrvi_1_open.png", 5)
 SPR(ID(spr_2), "build/nrvi_2.png", 5)

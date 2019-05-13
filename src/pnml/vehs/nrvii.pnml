@@ -1,7 +1,7 @@
 #define VEH nrvii
 /*[[MAKE
-build/nrvii_1.png src/gfx/xcf/vehs/nrvi.xcf bg 1 1_nrv2 panto;
-build/nrvii_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 1_nrv2 doors_1 panto;
+build/nrvii_1.png src/gfx/xcf/vehs/nrvi.xcf bg pur_nrv2 1 panto;
+build/nrvii_1_open.png src/gfx/xcf/vehs/nrvi.xcf bg 1 doors_1 panto;
 build/nrvii_2.png src/gfx/xcf/vehs/nrvi.xcf bg 3;
 build/nrvii_2_open.png src/gfx/xcf/vehs/nrvi.xcf bg 3 doors_3;
 ]]*/
