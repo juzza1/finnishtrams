@@ -6,6 +6,9 @@
     0xC6: 0x60; \
     0xC7: 0x51; \
     0xC8..0xCD: 0x61..0x66;
+#define CC1_TO_RED \
+    0xC6..0xCA: 0xB4..0xB8; \
+    0xCB..0xCD: 0xA4..0xA6;
 
 #define CC2_TO_BLUE \
     0x50..0x57: 0xC6..0xCD;
@@ -51,6 +54,13 @@ recolour_fin = reserve_sprites(1);
 replace(recolour_fin) {
     recolour_sprite {
         CC1_TO_BLUE
+        CC2_TO_WHITE
+    }
+}
+recolour_oldnrv = reserve_sprites(1);
+replace(recolour_oldnrv) {
+    recolour_sprite {
+        CC1_TO_RED
         CC2_TO_WHITE
     }
 }

@@ -11,6 +11,7 @@ STR_MORE_TEXT_DESIGNATION :Designation
 STR_LIVERY_CREAM_GREEN          :Cream top, green bottom
 STR_LIVERY_GREEN_YELLOW_ACCENTS :Green, yellow accents
 STR_LIVERY_HORSE                :Green, blue uniforms for drivers
+STR_LIVERY_NRVI                 :White sides, red top and bottom (pre-1986 livery)
 STR_LIVERY_WHITE_BLUE           :White top, blue bottom
 STR_LIVERY_YELLOW_GREEN         :Yellow top, green bottom
 STR_LIVERY_YELLOW_PALE_GREEN    :Yellow top, pale green bottom
