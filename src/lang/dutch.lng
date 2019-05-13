@@ -9,8 +9,8 @@ STR_PARAM_DEFAULT_LIVERY_OPT_REALISTIC :Realistisch
 STR_MORE_TEXT_LIVERIES    :Kleurstellingen
 STR_MORE_TEXT_DESIGNATION :Aanduiding
 
-STR_LIVERY_HORSE                :Groen, blauwe uniforms voor bestuurders
 STR_LIVERY_GREEN_YELLOW_ACCENTS :Groen, gele accenten
+STR_LIVERY_HORSE                :Groen, blauwe uniforms voor bestuurders
 STR_LIVERY_YELLOW_GREEN         :Gele bovenkant, groene onderkant
 STR_LIVERY_YELLOW_PALE_GREEN    :Gele bovenkant, bleekgroene onderkant
 

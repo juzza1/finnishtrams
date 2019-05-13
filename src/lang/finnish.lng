@@ -9,8 +9,8 @@ STR_PARAM_DEFAULT_LIVERY_OPT_REALISTIC :Todellinen
 STR_MORE_TEXT_LIVERIES    :Väritykset
 STR_MORE_TEXT_DESIGNATION :Numerointi
 
-STR_LIVERY_HORSE                :Vihreä, siniset kuljettajien uniformut
 STR_LIVERY_GREEN_YELLOW_ACCENTS :Vihreä, keltaiset yksityiskohdat
+STR_LIVERY_HORSE                :Vihreä, siniset kuljettajien uniformut
 STR_LIVERY_YELLOW_GREEN         :Keltainen yläosa, vihreä alaosa
 STR_LIVERY_YELLOW_PALE_GREEN    :Keltainen yläosa, haalean vihreä alaosa
 
